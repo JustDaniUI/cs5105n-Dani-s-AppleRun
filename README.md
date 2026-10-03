@@ -201,7 +201,7 @@ The following recordings demonstrate the current gameplay and level progression.
 
 **Gameplay Through Multiple Levels**
 
-[Watch the gameplay recording](snippets/playthrough.mp4)
+[Watch the gameplay recording with music](snippets/playthroughwmusic.mp4)
 
 ### Player Animation
 
@@ -251,9 +251,14 @@ Each heart represents one health point. When the player is hit by an enemy, one 
 
 The heart icons also use animations when their health state changes. The game uses fade-out and fade-in transitions when the level is reloaded, allowing the heart animations and health state to update together.
 
+**Heart Health System**
+
 ![Heart Health System](snippets/AdditionOFHearts.png)
+
+**Heart Health Scripting**
 
 ![Heart Health Scripting](snippets/scriptingHearts.png)
 
-**Heart Animation and Fade Transition Demonstration:**  
-`snippets/HeartsUpdate.mp4`
+**Heart Animation and Fade Transition Demonstration**
+
+[Watch the heart animation and fade transition demonstration](snippets/HeartsUpdate.mp4)

@@ -8,7 +8,20 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -850.0
 var alive = true
 var can_move = true
+var hearts_list: Array[TextureRect]
+var health = 3
+var previous_health = 3
 
+func _ready() -> void:
+	var hearts_parents = $health_bar/HBoxContainer
+	
+	for child in hearts_parents.get_children():
+		hearts_list.append(child)
+	update_heart_display()
+
+func update_heart_display() -> void:
+	for i in range(hearts_list.size()):
+		hearts_list[i].visible = i < health
 
 func _physics_process(delta: float) -> void:
 	
@@ -48,6 +61,27 @@ func _physics_process(delta: float) -> void:
 			animated_sprite_2d.flip_h = true
 	
 func die() -> void:
-	death_sound.play()
-	animated_sprite_2d.animation = "dying"
-	alive = false
+	if not alive:
+		return
+
+	if health > 0:
+		var lost_heart_index = health - 1
+		health -= 1
+
+		update_heart_display()
+
+		var heart = hearts_list[lost_heart_index]
+		var sprite = heart.get_node("Heart") as AnimatedSprite2D
+
+		heart.visible = true
+		
+		sprite.animation_finished.connect(
+			func():
+				heart.visible = false,
+				CONNECT_ONE_SHOT
+		)
+		sprite.play("Death")
+
+		death_sound.play()
+		animated_sprite_2d.animation = "dying"
+		alive = false

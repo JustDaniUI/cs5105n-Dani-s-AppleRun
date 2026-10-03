@@ -166,7 +166,9 @@ A peer playtest and a documented improvement based on player feedback are still 
 
 ## 9. Current Development Status
 
-The project currently includes player movement, jumping, enemies, collectible apples, level transitions, player animations, particle effects, a score HUD, sound effects, and background music.
+The project currently includes player movement, jumping, enemies, collectible apples, level transitions, player animations, particle effects, a score HUD, a three-heart health system, sound effects, and background music.
+
+The heart health system displays three hearts on the HUD and removes a heart when the player is hit by an enemy. Health is maintained when the player respawns.
 
 Level 1 and Level 2 have been created. Level 3 is planned as a future addition.
 
@@ -240,3 +242,18 @@ The following screenshots document the player model and scripting work.
 ![Scripting](snippets/scripting.png)
 
 ![Additional Scripting](snippets/scriptingPart2.png)
+
+### Player Health and Heart System
+
+A three-heart health system was added to the player HUD to provide visual feedback about the player's remaining health.
+
+Each heart represents one health point. When the player is hit by an enemy, one health point is removed and the corresponding heart is hidden from the HUD. The player's remaining health is maintained when the player respawns at the level's spawn point.
+
+The heart icons also use animations when their health state changes. The game uses fade-out and fade-in transitions when the level is reloaded, allowing the heart animations and health state to update together.
+
+![Heart Health System](snippets/AdditionOFHearts.png)
+
+![Heart Health Scripting](snippets/scriptingHearts.png)
+
+**Heart Animation and Fade Transition Demonstration:**  
+`snippets/HeartsUpdate.mp4`

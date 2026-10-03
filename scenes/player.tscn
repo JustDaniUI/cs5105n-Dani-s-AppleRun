@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bv766wx5tnh7f" path="res://Assets/images/player/Run (32x32).png" id="4_fjrip"]
 [ext_resource type="AudioStream" uid="uid://djvs2iydfd3qs" path="res://Assets/sounds/jump.wav" id="6_tuyoq"]
 [ext_resource type="AudioStream" uid="uid://cewvnqwsbu40v" path="res://Assets/sounds/death.wav" id="7_fjrip"]
+[ext_resource type="PackedScene" uid="uid://bt3mi51su8jgn" path="res://scenes/heart.tscn" id="8_smehm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
 atlas = ExtResource("1_dqkch")
@@ -266,3 +267,35 @@ stream = ExtResource("6_tuyoq")
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=668817480]
 stream = ExtResource("7_fjrip")
+
+[node name="health_bar" type="CanvasLayer" parent="." unique_id=772994781]
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="health_bar" unique_id=1598987055]
+offset_left = 19.0
+offset_top = 20.333334
+offset_right = 75.0
+offset_bottom = 60.333336
+metadata/_edit_group_ = true
+
+[node name="heart" type="TextureRect" parent="health_bar/HBoxContainer" unique_id=449181306]
+custom_minimum_size = Vector2(14, 0)
+layout_mode = 2
+
+[node name="Heart" parent="health_bar/HBoxContainer/heart" unique_id=161567385 instance=ExtResource("8_smehm")]
+position = Vector2(7, 6)
+
+[node name="heart2" type="TextureRect" parent="health_bar/HBoxContainer" unique_id=1121276611]
+custom_minimum_size = Vector2(14, 0)
+layout_mode = 2
+
+[node name="Heart" parent="health_bar/HBoxContainer/heart2" unique_id=1956696317 instance=ExtResource("8_smehm")]
+position = Vector2(7, 6)
+
+[node name="heart3" type="TextureRect" parent="health_bar/HBoxContainer" unique_id=1819692474]
+custom_minimum_size = Vector2(14, 0)
+layout_mode = 2
+
+[node name="Heart" parent="health_bar/HBoxContainer/heart3" unique_id=9953862 instance=ExtResource("8_smehm")]
+position = Vector2(7, 6)

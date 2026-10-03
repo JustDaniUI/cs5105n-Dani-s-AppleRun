@@ -5,7 +5,9 @@ extends Node2D
 
 var level: int = 1
 var score: int = 0
+var health: int = 3
 var current_level_root: Node = null
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,28 +18,36 @@ func _ready() -> void:
 
 #Level Management
 func _load_level(level_number: int, first_load: bool, reset_score: bool) -> void:
-	#Fade out
+	# Fade out
 	if not first_load:
 		await _fade(1.0)
-	
+
 	if reset_score:
 		score = 0
 		score_label.text = "SCORE: 0"
-	
+
 	if current_level_root:
 		current_level_root.queue_free()
-		
-	#Change Level
+
+	# Change Level
 	var level_path = "res://scenes/Levels/level%s.tscn" % level_number
 	current_level_root = load(level_path).instantiate()
-	add_child(current_level_root)
 	current_level_root.name = "LevelRoot"
-	_setup_level(current_level_root)
-	
-	#Fade in
-	await _fade(0.0)
-	
+	add_child(current_level_root)
 
+	# Setup player health BEFORE setting up the rest
+	var player = current_level_root.get_node_or_null("Player")
+	if player:
+		player.health = health
+
+	_setup_level(current_level_root)
+
+	# Make sure the player's hearts display the saved health
+	if player:
+		player.update_heart_display()
+
+	# Fade in
+	await _fade(0.0)
 
 func _setup_level(level_root: Node) -> void:
 	# Connect Exit
@@ -61,7 +71,13 @@ func _setup_level(level_root: Node) -> void:
 # Signal Handlers
 func _on_player_died(body): 
 	body.die()
-	await _load_level(level, false, true)
+	health = body.health
+	
+	if health  > 0:
+		await _load_level(level, false, true)
+	else:
+		print("Game Over !")
+	
 	
 func _on_exit_body_entered(body: Node2D) -> void:
 	if body.name == "Player":

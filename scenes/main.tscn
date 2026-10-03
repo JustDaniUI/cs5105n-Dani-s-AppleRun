@@ -24,6 +24,18 @@ script = ExtResource("1_0wfyh")
 [node name="LevelRoot" parent="." unique_id=1754574949 instance=ExtResource("2_0wfyh")]
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1116398861]
+layer = 10
+
+[node name="Fade" type="ColorRect" parent="HUD" unique_id=360829372]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 17.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="ScorePannel" type="Panel" parent="HUD" unique_id=914317838]
 anchors_preset = 5
@@ -52,17 +64,6 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_sugp2")
 theme_override_font_sizes/font_size = 32
 text = "SCORE : 0"
-
-[node name="Fade" type="ColorRect" parent="HUD" unique_id=360829372]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 17.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
 
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1814683385]
 stream = ExtResource("4_jyhfs")

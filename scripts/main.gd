@@ -67,6 +67,10 @@ func _show_main_menu() -> void:
 	_clear_all_levels()
 	if home_screen:
 		home_screen.show()
+		var bg = home_screen.get_node_or_null("ParallaxBackground")
+		if bg:
+			bg.visible = true
+			bg.scroll_offset = Vector2.ZERO
 	fade.modulate.a = 0.0
 
 
@@ -78,6 +82,9 @@ func _start_game(p_level: int, p_score: int, p_health: int) -> void:
 
 	if home_screen:
 		home_screen.hide()
+		var bg = home_screen.get_node_or_null("ParallaxBackground")
+		if bg:
+			bg.visible = false
 	if score_panel:
 		score_panel.show()
 		score_label.text = "SCORE: %s" % score

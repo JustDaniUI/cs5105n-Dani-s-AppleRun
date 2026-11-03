@@ -6,12 +6,13 @@
 [ext_resource type="AudioStream" path="res://Assets/sounds/music.ogg" id="16_mus"]
 [ext_resource type="Script" path="res://scripts/parallax_scroll.gd" id="17_parall"]
 [ext_resource type="Texture2D" path="res://Assets/onlineAssets/Forest layer1.png" id="bg_l1"]
+[ext_resource type="Texture2D" uid="uid://dil778ka5n2l1" path="res://Assets/onlineAssets/Forest layer8.png" id="bg_l8"]
+[ext_resource type="Texture2D" uid="uid://bpyjle5fvja2p" path="res://Assets/onlineAssets/Forest layer9.png" id="bg_l9"]
 [ext_resource type="Texture2D" path="res://Assets/onlineAssets/Forest layer2.png" id="bg_l2"]
 [ext_resource type="Texture2D" path="res://Assets/onlineAssets/Forest layer3.png" id="bg_l3"]
 [ext_resource type="Texture2D" path="res://Assets/onlineAssets/Forest layer4.png" id="bg_l4"]
 [ext_resource type="Texture2D" path="res://Assets/onlineAssets/Forest layer5.png" id="bg_l5"]
 [ext_resource type="Texture2D" path="res://Assets/onlineAssets/Forest layer6.png" id="bg_l6"]
-[ext_resource type="Texture2D" path="res://Assets/onlineAssets/Forest layer7.png" id="bg_l7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_normal"]
 bg_color = Color(0.14, 0.14, 0.18, 0.92)
@@ -87,8 +88,28 @@ scale = Vector2(3.3333334, 3.3333334)
 texture = ExtResource("bg_l1")
 centered = false
 
+[node name="Layer8" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.08, 0.0)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer8"]
+texture_filter = 1
+scale = Vector2(3.3333334, 3.3333334)
+texture = ExtResource("bg_l8")
+centered = false
+
+[node name="Layer9" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.12, 0.0)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer9"]
+texture_filter = 1
+scale = Vector2(3.3333334, 3.3333334)
+texture = ExtResource("bg_l9")
+centered = false
+
 [node name="Layer2" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.1, 0.0)
+motion_scale = Vector2(0.18, 0.0)
 motion_mirroring = Vector2(1280, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer2"]
@@ -98,7 +119,7 @@ texture = ExtResource("bg_l2")
 centered = false
 
 [node name="Layer3" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.18, 0.0)
+motion_scale = Vector2(0.25, 0.0)
 motion_mirroring = Vector2(1280, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer3"]
@@ -108,7 +129,7 @@ texture = ExtResource("bg_l3")
 centered = false
 
 [node name="Layer4" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.28, 0.0)
+motion_scale = Vector2(0.35, 0.0)
 motion_mirroring = Vector2(1280, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer4"]
@@ -118,7 +139,7 @@ texture = ExtResource("bg_l4")
 centered = false
 
 [node name="Layer5" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.4, 0.0)
+motion_scale = Vector2(0.5, 0.0)
 motion_mirroring = Vector2(1280, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer5"]
@@ -128,23 +149,13 @@ texture = ExtResource("bg_l5")
 centered = false
 
 [node name="Layer6" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.55, 0.0)
+motion_scale = Vector2(0.65, 0.0)
 motion_mirroring = Vector2(1280, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer6"]
 texture_filter = 1
 scale = Vector2(3.3333334, 3.3333334)
 texture = ExtResource("bg_l6")
-centered = false
-
-[node name="Layer7" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.7, 0.0)
-motion_mirroring = Vector2(1280, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer7"]
-texture_filter = 1
-scale = Vector2(3.3333334, 3.3333334)
-texture = ExtResource("bg_l7")
 centered = false
 
 [node name="MainPanel" type="Control" parent="."]

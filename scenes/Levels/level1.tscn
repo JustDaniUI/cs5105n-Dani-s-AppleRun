@@ -1,22 +1,18 @@
 [gd_scene format=3]
 
-[ext_resource type="Texture2D" path="res://Assets/images/background/Mountains 3.png" id="1_u5n8i"]
 [ext_resource type="Texture2D" path="res://Assets/images/Tilemap/Terrain (16x16).png" id="1_xq6p0"]
 [ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2_djuqw"]
 [ext_resource type="PackedScene" path="res://scenes/snail.tscn" id="4_klhba"]
 [ext_resource type="PackedScene" path="res://scenes/apple.tscn" id="5_ifky7"]
 [ext_resource type="Texture2D" path="res://Assets/images/Tilemap/Checkpoint (Flag Idle)(64x64).png" id="6_c6375"]
-[ext_resource type="Texture2D" path="res://Assets/images/background/Sky.png" id="7_sky"]
-[ext_resource type="Texture2D" path="res://Assets/images/background/House.png" id="9_house"]
-[ext_resource type="Texture2D" path="res://Assets/images/background/Tree 1.png" id="10_tree1"]
-[ext_resource type="Texture2D" path="res://Assets/images/background/Tree 2.png" id="11_tree2"]
-[ext_resource type="Texture2D" path="res://Assets/images/background/Fence 1.png" id="12_fence"]
-[ext_resource type="Texture2D" path="res://Assets/images/background/Barrel.png" id="13_barrel"]
-[ext_resource type="Texture2D" path="res://Assets/images/background/Flower 1.png" id="14_flower1"]
-[ext_resource type="Texture2D" path="res://Assets/images/background/Flower 2.png" id="15_flower2"]
-[ext_resource type="Texture2D" path="res://Assets/images/background/Cloud 1.png" id="16_cloud1"]
-[ext_resource type="Texture2D" path="res://Assets/images/background/Cloud 2.png" id="17_cloud2"]
 [ext_resource type="PackedScene" path="res://scenes/slime.tscn" id="18_slime"]
+[ext_resource type="Texture2D" path="res://Assets/onlineAssets/Forest layer1.png" id="bg_l1"]
+[ext_resource type="Texture2D" path="res://Assets/onlineAssets/Forest layer2.png" id="bg_l2"]
+[ext_resource type="Texture2D" path="res://Assets/onlineAssets/Forest layer3.png" id="bg_l3"]
+[ext_resource type="Texture2D" path="res://Assets/onlineAssets/Forest layer4.png" id="bg_l4"]
+[ext_resource type="Texture2D" path="res://Assets/onlineAssets/Forest layer5.png" id="bg_l5"]
+[ext_resource type="Texture2D" path="res://Assets/onlineAssets/Forest layer6.png" id="bg_l6"]
+[ext_resource type="Texture2D" path="res://Assets/onlineAssets/Forest layer7.png" id="bg_l7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_djuqw"]
 texture = ExtResource("1_xq6p0")
@@ -394,86 +390,92 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
 size = Vector2(20, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
+size = Vector2(20, 32)
+
 [node name="LevelRoot" type="Node2D" unique_id=1754574949]
 scale = Vector2(3, 3)
 
-[node name="Decorations" type="Node2D" parent="." unique_id=1504333453]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="Mountains" type="TextureRect" parent="Decorations" unique_id=2112458063]
-modulate = Color(1, 1, 1, 0.75)
+[node name="Layer1_Sky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.05, 0.0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer1_Sky"]
 texture_filter = 1
-offset_top = 80.0
-offset_right = 430.0
-offset_bottom = 240.0
-texture = ExtResource("1_u5n8i")
-expand_mode = 1
-stretch_mode = 6
+position = Vector2(215, 110)
+texture = ExtResource("bg_l1")
+region_enabled = true
+region_rect = Rect2(0, 0, 432, 243)
 
-[node name="Sky" type="TextureRect" parent="Decorations" unique_id=197108356]
+[node name="Layer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer2"]
 texture_filter = 1
-offset_left = 1.0
-offset_top = -1.0
-offset_right = 431.0
-offset_bottom = 239.0
-texture = ExtResource("7_sky")
-expand_mode = 1
-stretch_mode = 6
+position = Vector2(215, 130)
+texture = ExtResource("bg_l2")
+region_enabled = true
+region_rect = Rect2(0, 0, 432, 243)
 
-[node name="Cloud1" type="Sprite2D" parent="Decorations" unique_id=596524597]
+[node name="Layer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.15, 0.0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer3"]
 texture_filter = 1
-position = Vector2(80, 35)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("16_cloud1")
+position = Vector2(215, 140)
+texture = ExtResource("bg_l3")
+region_enabled = true
+region_rect = Rect2(0, 0, 432, 243)
 
-[node name="Cloud2" type="Sprite2D" parent="Decorations" unique_id=1621446894]
+[node name="Layer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer4"]
 texture_filter = 1
-position = Vector2(300, 25)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("17_cloud2")
+position = Vector2(215, 145)
+texture = ExtResource("bg_l4")
+region_enabled = true
+region_rect = Rect2(0, 0, 432, 243)
 
-[node name="House" type="Sprite2D" parent="Decorations" unique_id=1532175883]
+[node name="Layer5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.3, 0.0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer5"]
 texture_filter = 1
-position = Vector2(378, 157.33333)
-scale = Vector2(0.55, 0.55)
-texture = ExtResource("9_house")
+position = Vector2(215, 150)
+texture = ExtResource("bg_l5")
+region_enabled = true
+region_rect = Rect2(0, 0, 432, 243)
 
-[node name="Tree1" type="Sprite2D" parent="Decorations" unique_id=1105945877]
+[node name="Layer6" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.45, 0.0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer6"]
 texture_filter = 1
-position = Vector2(50, 135)
-scale = Vector2(0.55, 0.55)
-texture = ExtResource("10_tree1")
+position = Vector2(215, 155)
+texture = ExtResource("bg_l6")
+region_enabled = true
+region_rect = Rect2(0, 0, 432, 243)
 
-[node name="Tree2" type="Sprite2D" parent="Decorations" unique_id=1656308454]
+[node name="Layer7_Front" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.6, 0.0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer7_Front"]
 texture_filter = 1
-position = Vector2(261.33334, 159.33334)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("11_tree2")
+position = Vector2(215, 160)
+texture = ExtResource("bg_l7")
+region_enabled = true
+region_rect = Rect2(0, 0, 432, 243)
 
-[node name="Fence" type="Sprite2D" parent="Decorations" unique_id=1438609787]
-texture_filter = 1
-position = Vector2(322.16666, 183.16667)
-scale = Vector2(0.5497837, 0.5196077)
-texture = ExtResource("12_fence")
-
-[node name="Barrel" type="Sprite2D" parent="Decorations" unique_id=1735041941]
-texture_filter = 1
-position = Vector2(140.66667, 182.33333)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("13_barrel")
-
-[node name="Flower1" type="Sprite2D" parent="Decorations" unique_id=1321364497]
-texture_filter = 1
-position = Vector2(85, 185)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("14_flower1")
-
-[node name="Flower2" type="Sprite2D" parent="Decorations" unique_id=1722774086]
-texture_filter = 1
-position = Vector2(275, 185)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("15_flower2")
-
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1403291081]
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
 tile_map_data = PackedByteArray("AAAAAA4AAAAGAAIAAAABAA4AAAAHAAIAAAACAA4AAAAHAAIAAAADAA4AAAAHAAIAAAAEAA4AAAAHAAIAAAAFAA4AAAAHAAIAAAAGAA4AAAAHAAIAAAAHAA4AAAAHAAIAAAAIAA4AAAAHAAIAAAAJAA4AAAAHAAIAAAAKAA4AAAAHAAIAAAALAA4AAAAHAAIAAAAMAA4AAAAHAAIAAAANAA4AAAAHAAIAAAAOAA4AAAAHAAIAAAAPAA4AAAAHAAIAAAAQAA4AAAAHAAIAAAARAA4AAAAHAAIAAAASAA4AAAAHAAIAAAATAA4AAAAHAAIAAAAUAA4AAAAHAAIAAAAVAA4AAAAHAAIAAAAWAA4AAAAHAAIAAAAXAA4AAAAHAAIAAAAYAA4AAAAHAAIAAAAZAA4AAAAHAAIAAAAaAA4AAAAIAAIAAAAAAA0AAAAGAAEAAAABAA0AAAAHAAEAAAACAA0AAAAHAAEAAAADAA0AAAAHAAEAAAAEAA0AAAAHAAEAAAAFAA0AAAAHAAEAAAAGAA0AAAAHAAEAAAAHAA0AAAAHAAEAAAAIAA0AAAAHAAEAAAAJAA0AAAAHAAEAAAAKAA0AAAAHAAEAAAALAA0AAAAHAAEAAAAMAA0AAAAHAAEAAAANAA0AAAAHAAEAAAAOAA0AAAAHAAEAAAAPAA0AAAAHAAEAAAAQAA0AAAAHAAEAAAARAA0AAAAHAAEAAAASAA0AAAAHAAEAAAATAA0AAAAHAAEAAAAUAA0AAAAHAAEAAAAVAA0AAAAHAAEAAAAWAA0AAAAHAAEAAAAXAA0AAAAHAAEAAAAYAA0AAAAHAAEAAAAZAA0AAAAHAAEAAAAaAA0AAAAIAAEAAAAAAAwAAAAGAAAAAAABAAwAAAAHAAAAAAACAAwAAAAHAAAAAAADAAwAAAAHAAAAAAAEAAwAAAAHAAAAAAAFAAwAAAAHAAAAAAAGAAwAAAAHAAAAAAAHAAwAAAAHAAAAAAAIAAwAAAAHAAAAAAAJAAwAAAAHAAAAAAAKAAwAAAAHAAAAAAALAAwAAAAHAAAAAAAMAAwAAAAHAAAAAAANAAwAAAAHAAAAAAAOAAwAAAAHAAAAAAAPAAwAAAAHAAAAAAAQAAwAAAAHAAAAAAARAAwAAAAHAAAAAAASAAwAAAAHAAAAAAATAAwAAAAHAAAAAAAUAAwAAAAHAAAAAAAVAAwAAAAHAAAAAAAWAAwAAAAHAAAAAAAXAAwAAAAHAAAAAAAYAAwAAAAHAAAAAAAaAAwAAAAIAAAAAAAZAAwAAAAHAAAAAAAAAAsAAAAPAAoAAAAAAAoAAAAPAAkAAAAAAAkAAAAPAAkAAAAAAAgAAAAPAAkAAAAAAAcAAAAPAAkAAAAAAAYAAAAPAAkAAAAAAAUAAAAPAAkAAAAAAAQAAAAPAAkAAAAAAAMAAAAPAAkAAAAAAAIAAAAPAAkAAAAAAAEAAAAPAAkAAAAAAAAAAAAMAAkAAAABAAAAAAANAAgAAAACAAAAAAANAAgAAAADAAAAAAANAAgAAAAEAAAAAAANAAgAAAAFAAAAAAANAAgAAAAGAAAAAAANAAgAAAAHAAAAAAANAAgAAAAIAAAAAAANAAgAAAAJAAAAAAANAAgAAAAKAAAAAAANAAgAAAALAAAAAAANAAgAAAAMAAAAAAANAAgAAAANAAAAAAANAAgAAAAOAAAAAAANAAgAAAAPAAAAAAANAAgAAAAQAAAAAAANAAgAAAARAAAAAAANAAgAAAASAAAAAAANAAgAAAATAAAAAAANAAgAAAAUAAAAAAANAAgAAAAVAAAAAAANAAgAAAAWAAAAAAANAAgAAAAXAAAAAAANAAgAAAAYAAAAAAANAAgAAAAZAAAAAAANAAgAAAAaAAAAAAAMAAkAAAAaAAMAAAAPAAkAAAAaAAQAAAAPAAkAAAAaAAUAAAAPAAkAAAAaAAYAAAAPAAkAAAAaAAcAAAAPAAkAAAAaAAgAAAAPAAkAAAAaAAkAAAAPAAkAAAAaAAoAAAAPAAkAAAAaAAsAAAAPAAkAAAAXAAMAAAANAAQAAAAYAAMAAAANAAQAAAAZAAMAAAAOAAQAAAAYAAoAAAAUAAQAAAAYAAsAAAAUAAUAAAAZAAoAAAAVAAQAAAAZAAsAAAAVAAUAAAAWAAsAAAARAAQAAAAXAAsAAAASAAQAAAAXAAoAAAARAAQAAAAHAAoAAAAPAAQAAAAHAAsAAAAPAAYAAAABAAkAAAANAAgAAAACAAkAAAANAAgAAAADAAkAAAAOAAgAAAAEAAYAAAAMAAQAAAAFAAYAAAAOAAQAAAADAAoAAAATAAQAAAADAAsAAAATAAYAAAABAAoAAAARAAQAAAABAAsAAAARAAYAAAACAAsAAAASAAYAAAACAAoAAAASAAQAAAAWAAMAAAAMAAQAAAASAAsAAAAPAAYAAAASAAoAAAAPAAQAAAAJAAUAAAAMAAUAAAAMAAQAAAAMAAQAAAANAAQAAAAOAAQAAAARAAUAAAAMAAQAAAASAAUAAAANAAQAAAATAAUAAAAOAAQAAAA=")
 tile_set = SubResource("TileSet_xrivr")
@@ -484,10 +486,10 @@ position = Vector2(401, 143.66667)
 [node name="Enemies" type="Node2D" parent="." unique_id=84064416]
 
 [node name="Slime" parent="Enemies" unique_id=1532648702 instance=ExtResource("18_slime")]
-position = Vector2(178.33333, 182.33333)
+position = Vector2(219.66666, 182.33333)
 
 [node name="Snail" parent="Enemies" unique_id=328250316 instance=ExtResource("4_klhba")]
-position = Vector2(221.33334, 180.33334)
+position = Vector2(268.6667, 181.00002)
 
 [node name="Apples" type="Node2D" parent="." unique_id=714780]
 

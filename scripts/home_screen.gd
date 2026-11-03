@@ -1,5 +1,8 @@
 extends Control
 
+signal play_requested
+signal load_requested(slot_data: Dictionary)
+
 # Audio bus indices
 var bus_master : int = 0
 var bus_music  : int = 1
@@ -81,7 +84,9 @@ func _on_btn_play_pressed() -> void:
 		"level": 1,
 		"health": 3
 	}
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	play_requested.emit()
+	if get_parent() == get_tree().root:
+		get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 
 func _on_btn_settings_pressed() -> void:
@@ -99,126 +104,122 @@ func _on_btn_quit_pressed() -> void:
 # ── Settings & Audio Buses ────────────────────────────────────────────────────
 
 func _init_audio_sliders() -> void:
-	var master_vol = _db_to_percent(AudioServer.get_bus_volume_db(bus_master))
-	var music_vol  = _db_to_percent(AudioServer.get_bus_volume_db(bus_music))
-	var sfx_vol    = _db_to_percent(AudioServer.get_bus_volume_db(bus_sfx))
+	var master_db = AudioServer.get_bus_volume_db(bus_master)
+	var music_db  = AudioServer.get_bus_volume_db(bus_music)
+	var sfx_db    = AudioServer.get_bus_volume_db(bus_sfx)
 
-	master_slider.value = master_vol
-	master_val.text = "%d%%" % master_vol
+	master_slider.value = _db_to_slider(master_db)
+	music_slider.value  = _db_to_slider(music_db)
+	sfx_slider.value    = _db_to_slider(sfx_db)
 
-	music_slider.value = music_vol
-	music_val.text = "%d%%" % music_vol
-
-	sfx_slider.value = sfx_vol
-	sfx_val.text = "%d%%" % sfx_vol
+	master_val.text = "%d%%" % int(master_slider.value)
+	music_val.text  = "%d%%" % int(music_slider.value)
+	sfx_val.text    = "%d%%" % int(sfx_slider.value)
 
 
-func _db_to_percent(db: float) -> float:
-	if db <= -30.0:
+func _slider_to_db(pct: float) -> float:
+	if pct <= 0.0:
+		return -80.0
+	return linear_to_db(pct / 100.0)
+
+
+func _db_to_slider(db: float) -> float:
+	if db <= -70.0:
 		return 0.0
 	return clamp(db_to_linear(db) * 100.0, 0.0, 100.0)
 
 
 func _on_master_slider_value_changed(value: float) -> void:
-	master_val.text = "%d%%" % value
-	if value <= 1.0:
-		AudioServer.set_bus_mute(bus_master, true)
-	else:
-		AudioServer.set_bus_mute(bus_master, false)
-		AudioServer.set_bus_volume_db(bus_master, linear_to_db(value / 100.0))
+	master_val.text = "%d%%" % int(value)
+	AudioServer.set_bus_volume_db(bus_master, _slider_to_db(value))
+	AudioServer.set_bus_mute(bus_master, value <= 0.0)
 
 
 func _on_music_slider_value_changed(value: float) -> void:
-	music_val.text = "%d%%" % value
-	if value <= 1.0:
-		AudioServer.set_bus_mute(bus_music, true)
-	else:
-		AudioServer.set_bus_mute(bus_music, false)
-		AudioServer.set_bus_volume_db(bus_music, linear_to_db(value / 100.0))
+	music_val.text = "%d%%" % int(value)
+	AudioServer.set_bus_volume_db(bus_music, _slider_to_db(value))
+	AudioServer.set_bus_mute(bus_music, value <= 0.0)
 
 
 func _on_sfx_slider_value_changed(value: float) -> void:
-	sfx_val.text = "%d%%" % value
-	if value <= 1.0:
-		AudioServer.set_bus_mute(bus_sfx, true)
-	else:
-		AudioServer.set_bus_mute(bus_sfx, false)
-		AudioServer.set_bus_volume_db(bus_sfx, linear_to_db(value / 100.0))
-
-
-func _on_btn_test_sfx_pressed() -> void:
-	if test_sound:
+	sfx_val.text = "%d%%" % int(value)
+	AudioServer.set_bus_volume_db(bus_sfx, _slider_to_db(value))
+	AudioServer.set_bus_mute(bus_sfx, value <= 0.0)
+	if test_sound and not test_sound.playing:
 		test_sound.play()
 
 
-func _on_btn_settings_back_pressed() -> void:
+func _on_settings_back_pressed() -> void:
 	_show_main_panel()
 
 
-# ── 3-Slot Save / Load System ────────────────────────────────────────────────
+# ── Load Panel & 3 Slots ─────────────────────────────────────────────────────
 
 func _refresh_slots() -> void:
-	_setup_slot_ui(1, slot1_info, slot1_btn, slot1_del)
-	_setup_slot_ui(2, slot2_info, slot2_btn, slot2_del)
-	_setup_slot_ui(3, slot3_info, slot3_btn, slot3_del)
+	_setup_slot_row(1, slot1_info, slot1_btn, slot1_del)
+	_setup_slot_row(2, slot2_info, slot2_btn, slot2_del)
+	_setup_slot_row(3, slot3_info, slot3_btn, slot3_del)
 
 
-func _setup_slot_ui(slot: int, info_lbl: Label, load_btn: Button, del_btn: Button) -> void:
-	var info = SaveLoad.get_slot_info(slot)
-	if info.get("exists", false):
-		info_lbl.text = "LEVEL %d  •  SCORE: %d  •  HEARTS: %d  (%s)" % [
-			info.get("level", 1),
-			info.get("score", 0),
-			info.get("health", 3),
-			info.get("timestamp", "Saved")
-		]
-		load_btn.text = "LOAD"
-		del_btn.visible = true
-	else:
-		info_lbl.text = "[ EMPTY SLOT - NO DATA ]"
-		load_btn.text = "NEW RUN"
+func _setup_slot_row(slot_idx: int, info_lbl: Label, load_btn: Button, del_btn: Button) -> void:
+	var meta = SaveLoad.get_slot_metadata(slot_idx)
+	if meta.is_empty():
+		info_lbl.text = "Slot %d: Empty" % slot_idx
+		load_btn.text = "Start New"
 		del_btn.visible = false
-
-
-func _load_slot(slot: int) -> void:
-	var info = SaveLoad.get_slot_info(slot)
-	SaveLoad.active_slot = slot
-
-	if info.get("exists", false):
-		# Load from saved progress
-		SaveLoad.is_loading_saved_game = true
-		SaveLoad.loaded_data = info
 	else:
-		# Start fresh in this slot
+		info_lbl.text = "Slot %d: Level %s | Score: %s | Hearts: %s" % [
+			slot_idx,
+			meta.get("level", 1),
+			meta.get("score", 0),
+			meta.get("health", 3)
+		]
+		load_btn.text = "Load Slot %d" % slot_idx
+		del_btn.visible = true
+
+
+func _load_slot(slot_idx: int) -> void:
+	var data = SaveLoad.load_slot(slot_idx)
+	if data.is_empty():
 		SaveLoad.is_loading_saved_game = false
+		SaveLoad.active_slot = slot_idx
 		SaveLoad.loaded_data = {
 			"score": 0,
 			"level": 1,
 			"health": 3
 		}
+	else:
+		SaveLoad.is_loading_saved_game = true
+		SaveLoad.active_slot = slot_idx
+		SaveLoad.loaded_data = data
 
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	load_requested.emit(SaveLoad.loaded_data)
+	if get_parent() == get_tree().root:
+		get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 
-func _on_slot_1_load_pressed() -> void: _load_slot(1)
-func _on_slot_2_load_pressed() -> void: _load_slot(2)
-func _on_slot_3_load_pressed() -> void: _load_slot(3)
-
-
-func _on_slot_1_delete_pressed() -> void:
-	SaveLoad.delete_slot(1)
+func _delete_slot(slot_idx: int) -> void:
+	SaveLoad.delete_slot(slot_idx)
 	_refresh_slots()
 
 
-func _on_slot_2_delete_pressed() -> void:
-	SaveLoad.delete_slot(2)
-	_refresh_slots()
+func _on_slot1_load_pressed() -> void:
+	_load_slot(1)
 
+func _on_slot1_delete_pressed() -> void:
+	_delete_slot(1)
 
-func _on_slot_3_delete_pressed() -> void:
-	SaveLoad.delete_slot(3)
-	_refresh_slots()
+func _on_slot2_load_pressed() -> void:
+	_load_slot(2)
 
+func _on_slot2_delete_pressed() -> void:
+	_delete_slot(2)
 
-func _on_btn_load_back_pressed() -> void:
+func _on_slot3_load_pressed() -> void:
+	_load_slot(3)
+
+func _on_slot3_delete_pressed() -> void:
+	_delete_slot(3)
+
+func _on_load_back_pressed() -> void:
 	_show_main_panel()

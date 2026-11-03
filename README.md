@@ -188,31 +188,62 @@ Each audio stream player in `main.tscn`, `player.tscn`, and `apple.tscn` is assi
 
 ### Objective
 
-This activity focused on implementing an enemy with a Finite State Machine (FSM) for dynamic behaviors (patrol, chase, and return) and pair-programming the state machine with an AI coding assistant.
+This activity focused on implementing enemies with Finite State Machines (FSM) for dynamic behaviors (patrol, chase, and return), introducing diverse animated enemy varieties, pair-programming the state machines with an AI coding assistant, and ensuring rock-solid ledge/wall navigation so enemies never float in mid-air or pass through geometry.
 
-### Enemy Finite State Machine (FSM)
+### Enemy Finite State Machines (FSM) & RayCast Navigation
 
-The Snail enemy (`scripts/snail.gd`) operates using an explicit 3-state machine:
+All enemy types operate with an explicit state machine and dedicated `RayCast2D` navigation checks:
+- **FloorDetector (Ledge RayCast):** Points downward ahead of the enemy's front foot. When ground ends, the enemy immediately reverses direction, preventing them from ever walking off platforms into mid-air.
+- **WallDetector (Wall RayCast):** Points horizontally in the movement direction. When colliding with walls, obstacles, or brick barriers, the enemy turns around safely without getting stuck.
+
+#### State Behaviors:
 1. **State.PATROL:**
-   - The snail walks back and forth along its designated platform ledge.
-   - A timer flips movement direction and sprite orientation periodically.
-   - Continually checks player distance; if the player enters `DETECT_RANGE` (200 px), transitions to `CHASE`.
+   - Enemy paces along its platform at a fair, steady speed.
+   - Automatically turns around upon detecting a ledge edge or wall obstacle.
+   - Checks for the player on the exact same platform height (`DETECT_VERT <= 20 px`) within sight radius before transitioning to `CHASE`.
 2. **State.CHASE:**
-   - The snail doubles its speed (from 45 to 85 px/s) and aggressively moves toward the player's position.
-   - Sprites flip horizontally based on relative player direction.
-   - If the player escapes beyond `LOSE_RANGE` (340 px), transitions to `RETURN`.
+   - Increases speed to alertly pursue the player.
+   - Sprite flips horizontally to track the player.
+   - Respects platform boundaries: if pursuit would lead over a ledge or into an obstacle, the enemy halts or safely transitions to `RETURN` instead of diving off.
 3. **State.RETURN:**
-   - The snail turns around and walks back toward its initial spawn coordinates (`spawn_position`).
-   - Upon arriving within 4 px of spawn, snaps to position, restarts the patrol timer, and resumes `PATROL`.
+   - Enemy disengages and returns towards its original spawn coordinates (`spawn_position`).
+   - Upon arriving back at spawn, resumes standard `PATROL`.
+
+### Animated Enemy Variety (`Assets/images/Pixel Enemies Free`)
+
+1. **Slime (`scenes/slime.tscn`):**
+   - Cute green slime enemy with 10-frame bouncy hopping (`walk`) and 10-frame squishing (`idle`) animations.
+   - Introduced in Level 1 & Level 2 as an approachable, beginner-friendly jumping challenge.
+2. **Rat (`scenes/rat.tscn`):**
+   - Agile rodent enemy with high-speed 10-frame running (`running`) and 8-frame standing (`idle`) animations.
+   - Introduced in Level 3 as a fast-paced lower-deck hazard.
+3. **Skeleton (`scenes/skeleton.tscn`):**
+   - Tall undead warrior with an 11-frame marching (`walk`) and 8-frame vigilant (`idle`) animations.
+   - Serves as the guardian of the mountain peak fortress in Level 3.
+4. **Snail (`scenes/snail.tscn`):**
+   - Shell-shielded patroller with 10-frame crawling animation, fully overhauled with ledge and wall detection.
+
+### Level Redesign & Visual Polish
+
+All three levels were redesigned to be beginner-friendly with creative use of scenic background assets:
+- **Level 1 ("Greenfield Village"):** Tutorial level with continuous ground, cozy village cottage (`House.png`), lush foliage (`Tree 1/2`, `Fence 1`, `Flower 1/2`), a slow hopping Slime, and 4 guided apples leading to the finish flag.
+- **Level 2 ("Forest Outpost & Mill"):** Multi-tier forest outpost with `Wooden Shed.png`, `Standing Torch.png`, `Barrel.png`, stacked rocks, an animated Slime on the middle deck, and a Snail pacing cleanly on the lower ground without any mid-air floating.
+- **Level 3 ("Mountain Peak & Fortress"):** Climactic fortress summit with `Mountains 3.png`, torches, barrels, moving platforms bridging mountain crags, and encounters with the swift Rat and Skeleton sentinel.
+
+### Welcoming Main Menu / Home Screen Integration
+
+- Directly integrated into `main.tscn` so pressing **F6** (or **F5**) immediately prompts the player with the warm, welcoming Home Screen rather than launching directly into a level.
+- Scenic decorative backdrop using `House.png`, `Tree 1/2`, `Fence 1`, `Cloud 1/2`, and flower clusters.
+- Features `PLAY GAME` (starts fresh with score 0), `LOAD GAME` (3 persistent slots), `SETTINGS` (Master, Music, SFX volume sliders), and `QUIT`.
 
 ### AI-Assisted Coding Disclosure
 
-- **AI-Drafted:** The initial skeleton of the `enum State`, state match loop, and basic chase vector math was drafted with an AI assistant.
+- **AI-Drafted:** Sprite frame slicing coordinates for the new animated enemy packs, initial raycast ledge detection logic, and procedural scene assembly.
 - **Student Refactoring & Ownership:**
-  - Added safe player node resolution (`_find_player()`) that dynamically resolves the player even after runtime level reloading.
-  - Implemented the `RETURN` state to prevent the snail from getting stuck off-ledge when losing player agro.
-  - Replaced hardcoded velocities with separated constants (`PATROL_SPEED`, `CHASE_SPEED`, `DETECT_RANGE`, `LOSE_RANGE`) and playtested to balance challenge fairness.
-  - Retained full GDScript typing and ownership of every line.
+  - Designed fair, beginner-friendly platforming layouts and enemy placement.
+  - Implemented vertical tolerance clamps (`DETECT_VERT`) and wall collision filtering so enemies never glitch or chase across vertical tiers.
+  - Handled seamless Home Screen / Main scene transition logic and audio bus wiring.
+  - Retained full GDScript typing, testing, and ownership of every line.
 
 ## 10. Week 7 — Juice, Save/Load & Optimization
 

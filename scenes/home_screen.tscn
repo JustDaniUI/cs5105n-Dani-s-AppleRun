@@ -1,13 +1,24 @@
-[gd_scene format=3 uid="uid://home_screen_apple_run"]
+[gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/home_screen.gd" id="1_homescr"]
-[ext_resource type="Texture2D" uid="uid://b0bbnc25k8n8l" path="res://Assets/images/background/Green.png" id="2_bg"]
-[ext_resource type="FontFile" uid="uid://vqoajl5yc7t3" path="res://Assets/fonts/Square-Black.ttf" id="3_font"]
-[ext_resource type="AudioStream" uid="uid://bn2jab2f3qqlb" path="res://Assets/sounds/collect_apple.wav" id="4_sfx"]
-[ext_resource type="AudioStream" uid="uid://d2bd5mmdfr483" path="res://Assets/sounds/music.ogg" id="5_mus"]
+[ext_resource type="Texture2D" path="res://Assets/images/background/Sky.png" id="2_sky"]
+[ext_resource type="Texture2D" path="res://Assets/images/background/Mountains 1.png" id="3_mountains"]
+[ext_resource type="Texture2D" path="res://Assets/images/background/House.png" id="4_house"]
+[ext_resource type="Texture2D" path="res://Assets/images/background/Tree 1.png" id="5_tree1"]
+[ext_resource type="Texture2D" path="res://Assets/images/background/Tree 2.png" id="6_tree2"]
+[ext_resource type="Texture2D" path="res://Assets/images/background/Fence 1.png" id="7_fence"]
+[ext_resource type="Texture2D" path="res://Assets/images/background/Cloud 1.png" id="8_cloud1"]
+[ext_resource type="Texture2D" path="res://Assets/images/background/Cloud 2.png" id="9_cloud2"]
+[ext_resource type="Texture2D" path="res://Assets/images/background/Barrel.png" id="10_barrel"]
+[ext_resource type="Texture2D" path="res://Assets/images/background/Flower 1.png" id="11_flower1"]
+[ext_resource type="Texture2D" path="res://Assets/images/background/Flower 2.png" id="12_flower2"]
+[ext_resource type="Texture2D" path="res://Assets/images/background/Flower 5.png" id="13_flower5"]
+[ext_resource type="FontFile" path="res://Assets/fonts/Square-Black.ttf" id="14_font"]
+[ext_resource type="AudioStream" path="res://Assets/sounds/collect_apple.wav" id="15_sfx"]
+[ext_resource type="AudioStream" path="res://Assets/sounds/music.ogg" id="16_mus"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_normal"]
-bg_color = Color(0.16, 0.16, 0.2, 0.95)
+bg_color = Color(0.14, 0.14, 0.18, 0.92)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -45,7 +56,7 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_modal"]
-bg_color = Color(0.12, 0.12, 0.15, 0.96)
+bg_color = Color(0.12, 0.12, 0.16, 0.96)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
@@ -91,7 +102,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_homescr")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="BackgroundSky" type="TextureRect" parent="."]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -99,119 +110,265 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_bg")
-stretch_mode = 1
+texture = ExtResource("2_sky")
+expand_mode = 1
+stretch_mode = 6
 
-[node name="TintOverlay" type="ColorRect" parent="."]
+[node name="Mountains" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -420.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_mountains")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Decorations" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.04, 0.05, 0.08, 0.45)
 
-[node name="Header" type="VBoxContainer" parent="."]
+[node name="Cloud1" type="TextureRect" parent="Decorations"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 80.0
+offset_top = 70.0
+offset_right = 270.0
+offset_bottom = 96.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("8_cloud1")
+
+[node name="Cloud2" type="TextureRect" parent="Decorations"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 880.0
+offset_top = 95.0
+offset_right = 1049.0
+offset_bottom = 131.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("9_cloud2")
+
+[node name="TreeLeft" type="TextureRect" parent="Decorations"]
+texture_filter = 1
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -300.0
-offset_top = 80.0
-offset_right = 300.0
-offset_bottom = 210.0
-grow_horizontal = 2
-theme_override_constants/separation = 6
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -280.0
+offset_right = 135.0
+offset_bottom = -132.0
+grow_vertical = 0
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("5_tree1")
 
-[node name="TitleLabel" type="Label" parent="Header"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.88, 0.25, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
-theme_override_constants/shadow_offset_y = 4
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 64
-text = "🍎 APPLE RUN"
-horizontal_alignment = 1
+[node name="House" type="TextureRect" parent="Decorations"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 180.0
+offset_top = -260.0
+offset_right = 335.0
+offset_bottom = -127.0
+grow_vertical = 0
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("4_house")
 
-[node name="SubtitleLabel" type="Label" parent="Header"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.92, 0.95, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
-theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 20
-text = "A 2D PLATFORMER ADVENTURE"
-horizontal_alignment = 1
+[node name="Fence" type="TextureRect" parent="Decorations"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 425.0
+offset_top = -110.0
+offset_right = 502.0
+offset_bottom = -76.0
+grow_vertical = 0
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("7_fence")
+
+[node name="Barrel" type="TextureRect" parent="Decorations"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 150.0
+offset_top = -100.0
+offset_right = 177.0
+offset_bottom = -68.0
+grow_vertical = 0
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("10_barrel")
+
+[node name="Flower1" type="TextureRect" parent="Decorations"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 410.0
+offset_top = -75.0
+offset_right = 429.0
+offset_bottom = -52.0
+grow_vertical = 0
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("11_flower1")
+
+[node name="Flower2" type="TextureRect" parent="Decorations"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 540.0
+offset_top = -70.0
+offset_right = 555.0
+offset_bottom = -52.0
+grow_vertical = 0
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("12_flower2")
+
+[node name="Flower5" type="TextureRect" parent="Decorations"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_top = -75.0
+offset_right = -238.0
+offset_bottom = -53.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("13_flower5")
+
+[node name="TreeRight" type="TextureRect" parent="Decorations"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -270.0
+offset_right = -101.0
+offset_bottom = -133.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("6_tree2")
 
 [node name="MainPanel" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -40.0
-offset_right = 150.0
-offset_bottom = 260.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -170.0
+offset_right = 160.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
 
-[node name="BtnPlay" type="Button" parent="MainPanel/VBoxContainer"]
-custom_minimum_size = Vector2(280, 52)
+[node name="TitleBox" type="VBoxContainer" parent="MainPanel/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(0.1, 0.1, 0.1, 1)
-theme_override_colors/font_pressed_color = Color(0.1, 0.1, 0.1, 1)
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 28
-theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
-theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
-text = "PLAY"
+theme_override_constants/separation = 6
 
-[node name="BtnSettings" type="Button" parent="MainPanel/VBoxContainer"]
-custom_minimum_size = Vector2(280, 52)
+[node name="TitleLabel" type="Label" parent="MainPanel/VBoxContainer/TitleBox"]
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(0.1, 0.1, 0.1, 1)
-theme_override_colors/font_pressed_color = Color(0.1, 0.1, 0.1, 1)
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 28
-theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_colors/font_color = Color(0.96, 0.85, 0.2, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("14_font")
+theme_override_font_sizes/font_size = 56
+text = "AppleRun"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="MainPanel/VBoxContainer/TitleBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 0.9)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("14_font")
+theme_override_font_sizes/font_size = 18
+text = "A Crisp 2D Platforming Adventure"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="MainPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="BtnPlay" type="Button" parent="MainPanel/VBoxContainer"]
+custom_minimum_size = Vector2(280, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("14_font")
+theme_override_font_sizes/font_size = 24
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
-text = "SETTINGS"
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+text = "PLAY GAME"
 
 [node name="BtnLoad" type="Button" parent="MainPanel/VBoxContainer"]
-custom_minimum_size = Vector2(280, 52)
+custom_minimum_size = Vector2(280, 50)
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(0.1, 0.1, 0.1, 1)
-theme_override_colors/font_pressed_color = Color(0.1, 0.1, 0.1, 1)
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 28
-theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("14_font")
+theme_override_font_sizes/font_size = 24
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
-text = "LOAD"
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+text = "LOAD GAME"
+
+[node name="BtnSettings" type="Button" parent="MainPanel/VBoxContainer"]
+custom_minimum_size = Vector2(280, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("14_font")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+text = "SETTINGS"
 
 [node name="BtnQuit" type="Button" parent="MainPanel/VBoxContainer"]
-custom_minimum_size = Vector2(280, 52)
+custom_minimum_size = Vector2(280, 50)
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(0.1, 0.1, 0.1, 1)
-theme_override_colors/font_pressed_color = Color(0.1, 0.1, 0.1, 1)
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 28
-theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("14_font")
+theme_override_font_sizes/font_size = 24
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
 text = "QUIT"
 
 [node name="SettingsPanel" type="Panel" parent="."]
@@ -222,10 +379,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -280.0
-offset_top = -140.0
-offset_right = 280.0
-offset_bottom = 230.0
+offset_left = -260.0
+offset_top = -210.0
+offset_right = 260.0
+offset_bottom = 210.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_modal")
@@ -235,125 +392,110 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 30.0
-offset_top = 25.0
-offset_right = -30.0
-offset_bottom = -25.0
+offset_left = 32.0
+offset_top = 28.0
+offset_right = -32.0
+offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 20
 
-[node name="Title" type="Label" parent="SettingsPanel/VBoxContainer"]
+[node name="SettingsTitle" type="Label" parent="SettingsPanel/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.88, 0.25, 1)
-theme_override_fonts/font = ExtResource("3_font")
+theme_override_colors/font_color = Color(0.96, 0.85, 0.2, 1)
+theme_override_fonts/font = ExtResource("14_font")
 theme_override_font_sizes/font_size = 32
 text = "AUDIO SETTINGS"
 horizontal_alignment = 1
 
 [node name="MasterRow" type="HBoxContainer" parent="SettingsPanel/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 16
 
 [node name="Label" type="Label" parent="SettingsPanel/VBoxContainer/MasterRow"]
-custom_minimum_size = Vector2(140, 0)
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 18
-text = "Master"
+theme_override_fonts/font = ExtResource("14_font")
+theme_override_font_sizes/font_size = 20
+text = "MASTER"
 
 [node name="MasterSlider" type="HSlider" parent="SettingsPanel/VBoxContainer/MasterRow"]
-custom_minimum_size = Vector2(260, 24)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 value = 100.0
 
 [node name="MasterVal" type="Label" parent="SettingsPanel/VBoxContainer/MasterRow"]
-custom_minimum_size = Vector2(55, 0)
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 18
+theme_override_fonts/font = ExtResource("14_font")
+theme_override_font_sizes/font_size = 20
 text = "100%"
 horizontal_alignment = 2
 
 [node name="MusicRow" type="HBoxContainer" parent="SettingsPanel/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 16
 
 [node name="Label" type="Label" parent="SettingsPanel/VBoxContainer/MusicRow"]
-custom_minimum_size = Vector2(140, 0)
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 18
-text = "Music"
+theme_override_fonts/font = ExtResource("14_font")
+theme_override_font_sizes/font_size = 20
+text = "MUSIC"
 
 [node name="MusicSlider" type="HSlider" parent="SettingsPanel/VBoxContainer/MusicRow"]
-custom_minimum_size = Vector2(260, 24)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 value = 70.0
 
 [node name="MusicVal" type="Label" parent="SettingsPanel/VBoxContainer/MusicRow"]
-custom_minimum_size = Vector2(55, 0)
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 18
+theme_override_fonts/font = ExtResource("14_font")
+theme_override_font_sizes/font_size = 20
 text = "70%"
 horizontal_alignment = 2
 
 [node name="SFXRow" type="HBoxContainer" parent="SettingsPanel/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 16
 
 [node name="Label" type="Label" parent="SettingsPanel/VBoxContainer/SFXRow"]
-custom_minimum_size = Vector2(140, 0)
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 18
+theme_override_fonts/font = ExtResource("14_font")
+theme_override_font_sizes/font_size = 20
 text = "SFX"
 
 [node name="SFXSlider" type="HSlider" parent="SettingsPanel/VBoxContainer/SFXRow"]
-custom_minimum_size = Vector2(260, 24)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 value = 100.0
 
 [node name="SFXVal" type="Label" parent="SettingsPanel/VBoxContainer/SFXRow"]
-custom_minimum_size = Vector2(55, 0)
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 18
+theme_override_fonts/font = ExtResource("14_font")
+theme_override_font_sizes/font_size = 20
 text = "100%"
 horizontal_alignment = 2
 
-[node name="ButtonsRow" type="HBoxContainer" parent="SettingsPanel/VBoxContainer"]
+[node name="Spacer" type="Control" parent="SettingsPanel/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 20
-alignment = 1
+size_flags_vertical = 3
 
-[node name="BtnTestSFX" type="Button" parent="SettingsPanel/VBoxContainer/ButtonsRow"]
-custom_minimum_size = Vector2(150, 42)
+[node name="BtnSettingsBack" type="Button" parent="SettingsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(200, 46)
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(0.1, 0.1, 0.1, 1)
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("14_font")
+theme_override_font_sizes/font_size = 22
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
-text = "TEST SFX"
-
-[node name="BtnSettingsBack" type="Button" parent="SettingsPanel/VBoxContainer/ButtonsRow"]
-custom_minimum_size = Vector2(150, 42)
-layout_mode = 2
-theme_override_colors/font_hover_color = Color(0.1, 0.1, 0.1, 1)
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
-theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
 text = "BACK"
 
 [node name="LoadPanel" type="Panel" parent="."]
@@ -364,10 +506,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -340.0
-offset_top = -170.0
-offset_right = 340.0
-offset_bottom = 240.0
+offset_left = -300.0
+offset_top = -230.0
+offset_right = 300.0
+offset_bottom = 230.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_modal")
@@ -377,188 +519,163 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 25.0
-offset_top = 20.0
-offset_right = -25.0
-offset_bottom = -20.0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = -32.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 14
 
-[node name="Title" type="Label" parent="LoadPanel/VBoxContainer"]
+[node name="LoadTitle" type="Label" parent="LoadPanel/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.88, 0.25, 1)
-theme_override_fonts/font = ExtResource("3_font")
+theme_override_colors/font_color = Color(0.96, 0.85, 0.2, 1)
+theme_override_fonts/font = ExtResource("14_font")
 theme_override_font_sizes/font_size = 30
 text = "SELECT SAVE SLOT"
 horizontal_alignment = 1
 
 [node name="Slot1" type="PanelContainer" parent="LoadPanel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_slot_card")
 
 [node name="HBox" type="HBoxContainer" parent="LoadPanel/VBoxContainer/Slot1"]
 layout_mode = 2
-theme_override_constants/separation = 14
-
-[node name="SlotTag" type="Label" parent="LoadPanel/VBoxContainer/Slot1/HBox"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.88, 0.25, 1)
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 20
-text = " SLOT 1"
-horizontal_alignment = 1
+theme_override_constants/separation = 12
 
 [node name="InfoLabel" type="Label" parent="LoadPanel/VBoxContainer/Slot1/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 15
-text = "[ EMPTY SLOT - NO DATA ]"
+theme_override_fonts/font = ExtResource("14_font")
+theme_override_font_sizes/font_size = 18
+text = "Slot 1: Empty"
 
 [node name="BtnLoadSlot" type="Button" parent="LoadPanel/VBoxContainer/Slot1/HBox"]
-custom_minimum_size = Vector2(100, 42)
+custom_minimum_size = Vector2(130, 40)
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(0.1, 0.1, 0.1, 1)
-theme_override_fonts/font = ExtResource("3_font")
+theme_override_fonts/font = ExtResource("14_font")
 theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
-text = "LOAD"
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+text = "Load"
 
 [node name="BtnDeleteSlot" type="Button" parent="LoadPanel/VBoxContainer/Slot1/HBox"]
-custom_minimum_size = Vector2(44, 42)
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 16
+theme_override_fonts/font = ExtResource("14_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_danger")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_danger")
 theme_override_styles/normal = SubResource("StyleBoxFlat_btn_danger")
 text = "X"
 
 [node name="Slot2" type="PanelContainer" parent="LoadPanel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_slot_card")
 
 [node name="HBox" type="HBoxContainer" parent="LoadPanel/VBoxContainer/Slot2"]
 layout_mode = 2
-theme_override_constants/separation = 14
-
-[node name="SlotTag" type="Label" parent="LoadPanel/VBoxContainer/Slot2/HBox"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.88, 0.25, 1)
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 20
-text = " SLOT 2"
-horizontal_alignment = 1
+theme_override_constants/separation = 12
 
 [node name="InfoLabel" type="Label" parent="LoadPanel/VBoxContainer/Slot2/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 15
-text = "[ EMPTY SLOT - NO DATA ]"
+theme_override_fonts/font = ExtResource("14_font")
+theme_override_font_sizes/font_size = 18
+text = "Slot 2: Empty"
 
 [node name="BtnLoadSlot" type="Button" parent="LoadPanel/VBoxContainer/Slot2/HBox"]
-custom_minimum_size = Vector2(100, 42)
+custom_minimum_size = Vector2(130, 40)
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(0.1, 0.1, 0.1, 1)
-theme_override_fonts/font = ExtResource("3_font")
+theme_override_fonts/font = ExtResource("14_font")
 theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
-text = "LOAD"
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+text = "Load"
 
 [node name="BtnDeleteSlot" type="Button" parent="LoadPanel/VBoxContainer/Slot2/HBox"]
-custom_minimum_size = Vector2(44, 42)
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 16
+theme_override_fonts/font = ExtResource("14_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_danger")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_danger")
 theme_override_styles/normal = SubResource("StyleBoxFlat_btn_danger")
 text = "X"
 
 [node name="Slot3" type="PanelContainer" parent="LoadPanel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_slot_card")
 
 [node name="HBox" type="HBoxContainer" parent="LoadPanel/VBoxContainer/Slot3"]
 layout_mode = 2
-theme_override_constants/separation = 14
-
-[node name="SlotTag" type="Label" parent="LoadPanel/VBoxContainer/Slot3/HBox"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.88, 0.25, 1)
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 20
-text = " SLOT 3"
-horizontal_alignment = 1
+theme_override_constants/separation = 12
 
 [node name="InfoLabel" type="Label" parent="LoadPanel/VBoxContainer/Slot3/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 15
-text = "[ EMPTY SLOT - NO DATA ]"
+theme_override_fonts/font = ExtResource("14_font")
+theme_override_font_sizes/font_size = 18
+text = "Slot 3: Empty"
 
 [node name="BtnLoadSlot" type="Button" parent="LoadPanel/VBoxContainer/Slot3/HBox"]
-custom_minimum_size = Vector2(100, 42)
+custom_minimum_size = Vector2(130, 40)
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(0.1, 0.1, 0.1, 1)
-theme_override_fonts/font = ExtResource("3_font")
+theme_override_fonts/font = ExtResource("14_font")
 theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
-text = "LOAD"
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+text = "Load"
 
 [node name="BtnDeleteSlot" type="Button" parent="LoadPanel/VBoxContainer/Slot3/HBox"]
-custom_minimum_size = Vector2(44, 42)
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 16
+theme_override_fonts/font = ExtResource("14_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_danger")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_danger")
 theme_override_styles/normal = SubResource("StyleBoxFlat_btn_danger")
 text = "X"
 
+[node name="Spacer" type="Control" parent="LoadPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
 [node name="BtnLoadBack" type="Button" parent="LoadPanel/VBoxContainer"]
-custom_minimum_size = Vector2(160, 42)
+custom_minimum_size = Vector2(200, 46)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_colors/font_hover_color = Color(0.1, 0.1, 0.1, 1)
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_fonts/font = ExtResource("14_font")
+theme_override_font_sizes/font_size = 22
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
 text = "BACK"
 
 [node name="TestSFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_sfx")
+stream = ExtResource("15_sfx")
 bus = &"SFX"
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_mus")
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_mus")
 autoplay = true
 bus = &"Music"
 
 [connection signal="pressed" from="MainPanel/VBoxContainer/BtnPlay" to="." method="_on_btn_play_pressed"]
-[connection signal="pressed" from="MainPanel/VBoxContainer/BtnSettings" to="." method="_on_btn_settings_pressed"]
 [connection signal="pressed" from="MainPanel/VBoxContainer/BtnLoad" to="." method="_on_btn_load_pressed"]
+[connection signal="pressed" from="MainPanel/VBoxContainer/BtnSettings" to="." method="_on_btn_settings_pressed"]
 [connection signal="pressed" from="MainPanel/VBoxContainer/BtnQuit" to="." method="_on_btn_quit_pressed"]
 [connection signal="value_changed" from="SettingsPanel/VBoxContainer/MasterRow/MasterSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="SettingsPanel/VBoxContainer/MusicRow/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="SettingsPanel/VBoxContainer/SFXRow/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
-[connection signal="pressed" from="SettingsPanel/VBoxContainer/ButtonsRow/BtnTestSFX" to="." method="_on_btn_test_sfx_pressed"]
-[connection signal="pressed" from="SettingsPanel/VBoxContainer/ButtonsRow/BtnSettingsBack" to="." method="_on_btn_settings_back_pressed"]
-[connection signal="pressed" from="LoadPanel/VBoxContainer/Slot1/HBox/BtnLoadSlot" to="." method="_on_slot_1_load_pressed"]
-[connection signal="pressed" from="LoadPanel/VBoxContainer/Slot1/HBox/BtnDeleteSlot" to="." method="_on_slot_1_delete_pressed"]
-[connection signal="pressed" from="LoadPanel/VBoxContainer/Slot2/HBox/BtnLoadSlot" to="." method="_on_slot_2_load_pressed"]
-[connection signal="pressed" from="LoadPanel/VBoxContainer/Slot2/HBox/BtnDeleteSlot" to="." method="_on_slot_2_delete_pressed"]
-[connection signal="pressed" from="LoadPanel/VBoxContainer/Slot3/HBox/BtnLoadSlot" to="." method="_on_slot_3_load_pressed"]
-[connection signal="pressed" from="LoadPanel/VBoxContainer/Slot3/HBox/BtnDeleteSlot" to="." method="_on_slot_3_delete_pressed"]
-[connection signal="pressed" from="LoadPanel/VBoxContainer/BtnLoadBack" to="." method="_on_btn_load_back_pressed"]
+[connection signal="pressed" from="SettingsPanel/VBoxContainer/BtnSettingsBack" to="." method="_on_settings_back_pressed"]
+[connection signal="pressed" from="LoadPanel/VBoxContainer/Slot1/HBox/BtnLoadSlot" to="." method="_on_slot1_load_pressed"]
+[connection signal="pressed" from="LoadPanel/VBoxContainer/Slot1/HBox/BtnDeleteSlot" to="." method="_on_slot1_delete_pressed"]
+[connection signal="pressed" from="LoadPanel/VBoxContainer/Slot2/HBox/BtnLoadSlot" to="." method="_on_slot2_load_pressed"]
+[connection signal="pressed" from="LoadPanel/VBoxContainer/Slot2/HBox/BtnDeleteSlot" to="." method="_on_slot2_delete_pressed"]
+[connection signal="pressed" from="LoadPanel/VBoxContainer/Slot3/HBox/BtnLoadSlot" to="." method="_on_slot3_load_pressed"]
+[connection signal="pressed" from="LoadPanel/VBoxContainer/Slot3/HBox/BtnDeleteSlot" to="." method="_on_slot3_delete_pressed"]
+[connection signal="pressed" from="LoadPanel/VBoxContainer/BtnLoadBack" to="." method="_on_load_back_pressed"]

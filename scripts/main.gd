@@ -16,12 +16,22 @@ const HITSTOP_DURATION: float = 0.12
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# Save/Load — Load saved progress on startup if available
+	# Check if loaded from a save slot in Home Screen
 	if Engine.has_singleton("SaveLoad") or get_tree().root.has_node("SaveLoad"):
-		var saved = SaveLoad.load_game()
-		level = saved.get("level", 1)
-		score = saved.get("score", 0)
-		health = saved.get("health", 3)
+		if SaveLoad.is_loading_saved_game and not SaveLoad.loaded_data.is_empty():
+			level = SaveLoad.loaded_data.get("level", 1)
+			score = SaveLoad.loaded_data.get("score", 0)
+			health = SaveLoad.loaded_data.get("health", 3)
+			SaveLoad.is_loading_saved_game = false
+		else:
+			# Fresh start: score is ALWAYS 0
+			level = 1
+			score = 0
+			health = 3
+	else:
+		level = 1
+		score = 0
+		health = 3
 
 	score_label.text = "SCORE: %s" % score
 
@@ -106,14 +116,15 @@ func _on_player_died(body):
 	_hitstop_timer = HITSTOP_DURATION
 	_screen_shake(0.3, 10.0)
 
-	# Save progress so health carries over
+	# Save progress into active slot so health carries over
 	if Engine.has_singleton("SaveLoad") or get_tree().root.has_node("SaveLoad"):
-		SaveLoad.save_game(score, level, health)
+		SaveLoad.save_current_game(score, level, health)
 
 	if health > 0:
 		await _load_level(level, false, true)
 	else:
 		print("Game Over !")
+		# Reset slot on game over
 		if Engine.has_singleton("SaveLoad") or get_tree().root.has_node("SaveLoad"):
 			SaveLoad.delete_save()
 
@@ -123,9 +134,9 @@ func _on_exit_body_entered(body: Node2D) -> void:
 		level += 1
 		body.can_move = false
 
-		# Save progress on level advance
+		# Save progress to active slot on level advance
 		if Engine.has_singleton("SaveLoad") or get_tree().root.has_node("SaveLoad"):
-			SaveLoad.save_game(score, level, health)
+			SaveLoad.save_current_game(score, level, health)
 
 		await _load_level(level, false, false)
 
@@ -142,6 +153,10 @@ func increase_score() -> void:
 	score += 1
 	score_label.text = "SCORE: %s" % score
 	
+	# Save incrementally
+	if Engine.has_singleton("SaveLoad") or get_tree().root.has_node("SaveLoad"):
+		SaveLoad.save_current_game(score, level, health)
+
 	# Juice: punch scale on score panel
 	if score_panel:
 		score_panel.pivot_offset = score_panel.size / 2.0

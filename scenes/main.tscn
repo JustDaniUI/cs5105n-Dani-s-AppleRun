@@ -66,7 +66,7 @@ theme_override_fonts/font = ExtResource("3_sugp2")
 theme_override_font_sizes/font_size = 32
 text = "SCORE : 0"
 
-[node name="PauseMenu" parent="HUD" instance=ExtResource("5_pause")]
+[node name="PauseMenu" parent="HUD" unique_id=1071644375 instance=ExtResource("5_pause")]
 
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1814683385]
 stream = ExtResource("4_jyhfs")

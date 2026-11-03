@@ -11,17 +11,17 @@ config_version=5
 [application]
 
 config/name="PlatFormer_GameDev"
-run/main_scene="uid://b6xkqe7qkdpxr"
+run/main_scene="res://scenes/home_screen.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
-
-[autoload]
-
-SaveLoad="*res://scripts/save_load.gd"
 
 [audio]
 
 default_bus_layout="res://default_bus_layout.tres"
+
+[autoload]
+
+SaveLoad="*res://scripts/save_load.gd"
 
 [display]
 

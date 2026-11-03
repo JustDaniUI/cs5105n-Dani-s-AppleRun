@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://d2bd5mmdfr483" path="res://Assets/sounds/music.ogg" id="3_jyhfs"]
 [ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="4_pause"]
 [ext_resource type="PackedScene" path="res://scenes/home_screen.tscn" id="5_home"]
+[ext_resource type="PackedScene" path="res://scenes/ending_screen.tscn" id="6_ending"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xrivr"]
 bg_color = Color(0.772934, 0.769722, 0.109862, 1)
@@ -68,6 +69,9 @@ color = Color(0, 0, 0, 1)
 visible = false
 
 [node name="HomeScreen" parent="HUD" unique_id=1832150267 instance=ExtResource("5_home")]
+
+[node name="EndingScreen" parent="HUD" unique_id=1832150268 instance=ExtResource("6_ending")]
+visible = false
 
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=140190357]
 stream = ExtResource("3_jyhfs")

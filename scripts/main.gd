@@ -5,6 +5,7 @@ extends Node2D
 @onready var fade         : ColorRect  = $HUD/Fade
 @onready var pause_menu   : Control    = $HUD/PauseMenu
 @onready var home_screen  : Control    = $HUD/HomeScreen
+@onready var ending_screen: Control    = $HUD/EndingScreen
 
 var level : int = 1
 var score : int = 0
@@ -25,6 +26,12 @@ func _ready() -> void:
 	# Connect HomeScreen signals
 	if home_screen:
 		home_screen.play_requested.connect(_on_home_play_requested)
+
+	# Connect EndingScreen signals
+	if ending_screen:
+		ending_screen.hide()
+		ending_screen.replay_requested.connect(_on_ending_replay_requested)
+		ending_screen.quit_requested.connect(_on_ending_quit_requested)
 
 	# Check if launched directly from a save slot
 	if Engine.has_singleton("SaveLoad") or get_tree().root.has_node("SaveLoad"):
@@ -64,6 +71,8 @@ func _show_main_menu() -> void:
 		score_panel.hide()
 	if pause_menu:
 		pause_menu.hide()
+	if ending_screen:
+		ending_screen.hide()
 	_clear_all_levels()
 	get_viewport().canvas_transform = Transform2D.IDENTITY
 	if home_screen:
@@ -86,6 +95,8 @@ func _start_game(p_level: int, p_score: int, p_health: int) -> void:
 		var bg = home_screen.get_node_or_null("ParallaxBackground")
 		if bg:
 			bg.visible = false
+	if ending_screen:
+		ending_screen.hide()
 	if score_panel:
 		score_panel.show()
 		score_label.text = "SCORE: %s" % score
@@ -117,8 +128,8 @@ func _load_level(level_number: int, first_load: bool, reset_score: bool) -> void
 	# Change Level
 	var level_path = "res://scenes/Levels/level%s.tscn" % level_number
 	if not ResourceLoader.exists(level_path):
-		print("No more levels or level not found: %s. Returning to menu." % level_path)
-		_show_main_menu()
+		print("All levels completed! Showing ending screen.")
+		_show_ending_screen()
 		return
 
 	current_level_root = load(level_path).instantiate()
@@ -228,3 +239,29 @@ func _screen_shake(duration: float = 0.25, intensity: float = 8.0) -> void:
 		var offset = Vector2(randf_range(-intensity, intensity), randf_range(-intensity, intensity))
 		shake_tween.tween_property(self, "position", orig_pos + offset, duration / 8.0)
 		shake_tween.tween_property(self, "position", orig_pos, duration / 8.0)
+
+
+# â”€â”€ Ending Screen Transitions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+func _show_ending_screen() -> void:
+	is_game_active = false
+	if score_panel:
+		score_panel.hide()
+	if pause_menu:
+		pause_menu.hide()
+	_clear_all_levels()
+	get_viewport().canvas_transform = Transform2D.IDENTITY
+	fade.modulate.a = 0.0
+	if ending_screen:
+		ending_screen.set_score(score)
+		ending_screen.show()
+
+
+func _on_ending_replay_requested() -> void:
+	if ending_screen:
+		ending_screen.hide()
+	_start_game(1, 0, 3)
+
+
+func _on_ending_quit_requested() -> void:
+	get_tree().quit()

@@ -1,0 +1,246 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/death_screen.gd" id="1_death_scr"]
+[ext_resource type="FontFile" path="res://Assets/fonts/Square-Black.ttf" id="2_font"]
+[ext_resource type="Script" path="res://scripts/parallax_scroll.gd" id="3_parall"]
+[ext_resource type="Texture2D" uid="uid://rlolult4sh7s" path="res://Assets/onlineAssets/Forest layer1.png" id="bg_l1"]
+[ext_resource type="Texture2D" uid="uid://dil778ka5n2l1" path="res://Assets/onlineAssets/Forest layer8.png" id="bg_l8"]
+[ext_resource type="Texture2D" uid="uid://bpyjle5fvja2p" path="res://Assets/onlineAssets/Forest layer9.png" id="bg_l9"]
+[ext_resource type="Texture2D" uid="uid://d4ljqdbgdxvo6" path="res://Assets/onlineAssets/Forest layer2.png" id="bg_l2"]
+[ext_resource type="Texture2D" uid="uid://djeh60bp5kefx" path="res://Assets/onlineAssets/Forest layer3.png" id="bg_l3"]
+[ext_resource type="Texture2D" uid="uid://bmgixms4kv5dt" path="res://Assets/onlineAssets/Forest layer4.png" id="bg_l4"]
+[ext_resource type="Texture2D" uid="uid://c81wb8v6kawdl" path="res://Assets/onlineAssets/Forest layer5.png" id="bg_l5"]
+[ext_resource type="Texture2D" uid="uid://cntrgd3ij2prf" path="res://Assets/onlineAssets/Forest layer6.png" id="bg_l6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_modal"]
+bg_color = Color(0.12, 0.12, 0.16, 0.94)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.88, 0.22, 0.22, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.7)
+shadow_size = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_normal"]
+bg_color = Color(0.18, 0.18, 0.22, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.88, 0.22, 0.22, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+bg_color = Color(0.88, 0.22, 0.22, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_pressed"]
+bg_color = Color(0.65, 0.12, 0.12, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="DeathScreen" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_death_scr")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("3_parall")
+
+[node name="Layer1_Sky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.04, 0.0)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer1_Sky"]
+texture_filter = 1
+scale = Vector2(3.3333334, 3.3333334)
+texture = ExtResource("bg_l1")
+centered = false
+
+[node name="Layer8" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.08, 0.0)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer8"]
+texture_filter = 1
+scale = Vector2(3.3333334, 3.3333334)
+texture = ExtResource("bg_l8")
+centered = false
+
+[node name="Layer9" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.12, 0.0)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer9"]
+texture_filter = 1
+scale = Vector2(3.3333334, 3.3333334)
+texture = ExtResource("bg_l9")
+centered = false
+
+[node name="Layer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.18, 0.0)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer2"]
+texture_filter = 1
+scale = Vector2(3.3333334, 3.3333334)
+texture = ExtResource("bg_l2")
+centered = false
+
+[node name="Layer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.25, 0.0)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer3"]
+texture_filter = 1
+scale = Vector2(3.3333334, 3.3333334)
+texture = ExtResource("bg_l3")
+centered = false
+
+[node name="Layer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.35, 0.0)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer4"]
+texture_filter = 1
+scale = Vector2(3.3333334, 3.3333334)
+texture = ExtResource("bg_l4")
+centered = false
+
+[node name="Layer5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.0)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer5"]
+texture_filter = 1
+scale = Vector2(3.3333334, 3.3333334)
+texture = ExtResource("bg_l5")
+centered = false
+
+[node name="Layer6" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.65, 0.0)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer6"]
+texture_filter = 1
+scale = Vector2(3.3333334, 3.3333334)
+texture = ExtResource("bg_l6")
+centered = false
+
+[node name="DeathPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -180.0
+offset_right = 280.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_modal")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeathPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 28.0
+offset_right = -28.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="DeathPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.25, 0.25, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 42
+text = "YOU DIED!"
+horizontal_alignment = 1
+
+[node name="MessageLabel" type="Label" parent="DeathPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+text = "You died! You probably ate a bad apple."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Spacer" type="Control" parent="DeathPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DeathPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="BtnRetry" type="Button" parent="DeathPanel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(170, 48)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_colors/font_pressed_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_colors/font_focus_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+text = "RETRY"
+
+[node name="BtnMainMenu" type="Button" parent="DeathPanel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(170, 48)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_colors/font_pressed_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_colors/font_focus_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+text = "MAIN MENU"
+
+[connection signal="pressed" from="DeathPanel/VBoxContainer/HBoxContainer/BtnRetry" to="." method="_on_btn_retry_pressed"]
+[connection signal="pressed" from="DeathPanel/VBoxContainer/HBoxContainer/BtnMainMenu" to="." method="_on_btn_menu_pressed"]

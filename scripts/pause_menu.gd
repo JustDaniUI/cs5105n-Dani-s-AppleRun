@@ -8,6 +8,7 @@ extends Control
 @onready var music_val     : Label    = $OptionsPanel/VBoxContainer/MusicRow/MusicVal
 @onready var sfx_slider    : HSlider  = $OptionsPanel/VBoxContainer/SFXRow/SFXSlider
 @onready var sfx_val       : Label    = $OptionsPanel/VBoxContainer/SFXRow/SFXVal
+@onready var test_sound    : AudioStreamPlayer = $TestSFX
 
 var bus_master : int = 0
 var bus_music  : int = 1
@@ -90,6 +91,8 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 	if sfx_val: sfx_val.text = "%d%%" % int(value)
 	AudioServer.set_bus_volume_db(bus_sfx, _slider_to_db(value))
 	AudioServer.set_bus_mute(bus_sfx, value <= 0.0)
+	if test_sound:
+		test_sound.play()
 
 
 func _on_options_button_pressed() -> void:

@@ -142,7 +142,7 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 	sfx_val.text = "%d%%" % int(value)
 	AudioServer.set_bus_volume_db(bus_sfx, _slider_to_db(value))
 	AudioServer.set_bus_mute(bus_sfx, value <= 0.0)
-	if test_sound and not test_sound.playing:
+	if test_sound:
 		test_sound.play()
 
 

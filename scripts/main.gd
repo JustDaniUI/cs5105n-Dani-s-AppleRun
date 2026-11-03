@@ -6,6 +6,7 @@ extends Node2D
 @onready var pause_menu   : Control    = $HUD/PauseMenu
 @onready var home_screen  : Control    = $HUD/HomeScreen
 @onready var ending_screen: Control    = $HUD/EndingScreen
+@onready var death_screen : Control    = $HUD/DeathScreen
 
 var level : int = 1
 var score : int = 0
@@ -30,8 +31,16 @@ func _ready() -> void:
 	# Connect EndingScreen signals
 	if ending_screen:
 		ending_screen.hide()
+	if death_screen:
+		death_screen.hide()
 		ending_screen.replay_requested.connect(_on_ending_replay_requested)
 		ending_screen.quit_requested.connect(_on_ending_quit_requested)
+
+	# Connect DeathScreen signals
+	if death_screen:
+		death_screen.hide()
+		death_screen.retry_requested.connect(_on_death_retry_requested)
+		death_screen.menu_requested.connect(_on_death_menu_requested)
 
 	# Check if launched directly from a save slot
 	if Engine.has_singleton("SaveLoad") or get_tree().root.has_node("SaveLoad"):
@@ -73,6 +82,8 @@ func _show_main_menu() -> void:
 		pause_menu.hide()
 	if ending_screen:
 		ending_screen.hide()
+	if death_screen:
+		death_screen.hide()
 	_clear_all_levels()
 	get_viewport().canvas_transform = Transform2D.IDENTITY
 	if home_screen:
@@ -97,6 +108,8 @@ func _start_game(p_level: int, p_score: int, p_health: int) -> void:
 			bg.visible = false
 	if ending_screen:
 		ending_screen.hide()
+	if death_screen:
+		death_screen.hide()
 	if score_panel:
 		score_panel.show()
 		score_label.text = "SCORE: %s" % score
@@ -191,8 +204,8 @@ func _on_player_died(body):
 		# Reset slot on game over
 		if Engine.has_singleton("SaveLoad") or get_tree().root.has_node("SaveLoad"):
 			SaveLoad.delete_save()
-		await get_tree().create_timer(1.2).timeout
-		_show_main_menu()
+		await get_tree().create_timer(0.9).timeout
+		_show_death_screen()
 
 
 func _on_exit_body_entered(body: Node2D) -> void:
@@ -260,8 +273,40 @@ func _show_ending_screen() -> void:
 func _on_ending_replay_requested() -> void:
 	if ending_screen:
 		ending_screen.hide()
+	if death_screen:
+		death_screen.hide()
 	_start_game(1, 0, 3)
 
 
 func _on_ending_quit_requested() -> void:
 	get_tree().quit()
+
+
+# ── Death Screen Transitions ───────────────────────────────────────────────
+
+func _show_death_screen() -> void:
+	is_game_active = false
+	if score_panel:
+		score_panel.hide()
+	if pause_menu:
+		pause_menu.hide()
+	if ending_screen:
+		ending_screen.hide()
+	_clear_all_levels()
+	get_viewport().canvas_transform = Transform2D.IDENTITY
+	fade.modulate.a = 0.0
+	if death_screen:
+		death_screen.setup_death_screen()
+
+
+func _on_death_retry_requested() -> void:
+	if death_screen:
+		death_screen.hide()
+	_start_game(level, 0, 3)
+
+
+func _on_death_menu_requested() -> void:
+	if death_screen:
+		death_screen.hide()
+	_show_main_menu()
+

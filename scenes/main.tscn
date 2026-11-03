@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="4_pause"]
 [ext_resource type="PackedScene" path="res://scenes/home_screen.tscn" id="5_home"]
 [ext_resource type="PackedScene" path="res://scenes/ending_screen.tscn" id="6_ending"]
+[ext_resource type="PackedScene" path="res://scenes/death_screen.tscn" id="7_death"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xrivr"]
 bg_color = Color(0.772934, 0.769722, 0.109862, 1)
@@ -71,6 +72,9 @@ visible = false
 [node name="HomeScreen" parent="HUD" unique_id=1832150267 instance=ExtResource("5_home")]
 
 [node name="EndingScreen" parent="HUD" unique_id=1832150268 instance=ExtResource("6_ending")]
+visible = false
+
+[node name="DeathScreen" parent="HUD" unique_id=1832150269 instance=ExtResource("7_death")]
 visible = false
 
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=140190357]

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_pause_script"]
 [ext_resource type="FontFile" path="res://Assets/fonts/Square-Black.ttf" id="2_font"]
+[ext_resource type="AudioStream" uid="uid://bn2jab2f3qqlb" path="res://Assets/sounds/collect_apple.wav" id="3_sfx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 bg_color = Color(0.12, 0.12, 0.15, 0.95)
@@ -305,6 +306,10 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
 text = "BACK"
+
+[node name="TestSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_sfx")
+bus = &"SFX"
 
 [connection signal="pressed" from="MenuPanel/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="MenuPanel/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

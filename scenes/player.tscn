@@ -301,15 +301,3 @@ layout_mode = 2
 
 [node name="Heart" parent="health_bar/HBoxContainer/heart3" unique_id=9953862 instance=ExtResource("8_smehm")]
 position = Vector2(7, 6)
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1182736541]
-position = Vector2(0, -20)
-zoom = Vector2(1, 1)
-position_smoothing_enabled = true
-position_smoothing_speed = 7.0
-drag_horizontal_enabled = true
-drag_vertical_enabled = false
-drag_left_margin = 0.3
-drag_right_margin = 0.3
-drag_top_margin = 0.1
-drag_bottom_margin = 0.4

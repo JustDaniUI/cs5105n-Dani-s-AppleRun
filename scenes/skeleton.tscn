@@ -1,7 +1,7 @@
 [gd_scene format=3]
 
-[ext_resource type="Texture2D" path="res://Assets/images/Pixel Enemies Free/skeleton base outline v2-Sheet.png" id="1_skel_tex"]
 [ext_resource type="Script" path="res://scripts/skeleton.gd" id="1_skel_scr"]
+[ext_resource type="Texture2D" path="res://Assets/images/Pixel Enemies Free/skeleton base outline v2-Sheet.png" id="1_skel_tex"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_idle_0"]
 atlas = ExtResource("1_skel_tex")
@@ -146,7 +146,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 10.0
+"speed": 12.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_skel"]
@@ -163,15 +163,12 @@ animation = &"walk"
 autoplay = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_skel")
 
-[node name="FloorDetector" type="RayCast2D" parent="."]
-position = Vector2(-14, 10)
-target_position = Vector2(0, 16)
-
-[node name="WallDetector" type="RayCast2D" parent="."]
-position = Vector2(0, 4)
-target_position = Vector2(-16, 0)
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.8
+autostart = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

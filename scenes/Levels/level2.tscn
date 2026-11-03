@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" path="res://Assets/onlineAssets/Forest layer5.png" id="bg_l5"]
 [ext_resource type="Texture2D" path="res://Assets/onlineAssets/Forest layer6.png" id="bg_l6"]
 [ext_resource type="Texture2D" path="res://Assets/onlineAssets/Forest layer7.png" id="bg_l7"]
+[ext_resource type="Script" path="res://scripts/parallax_scroll.gd" id="bg_script"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_djuqw"]
 texture = ExtResource("2_kn2gx")
@@ -390,90 +391,81 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
 size = Vector2(20, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
-size = Vector2(20, 32)
-
 [node name="LevelRoot" type="Node2D" unique_id=1754574949]
 scale = Vector2(3, 3)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("bg_script")
 
 [node name="Layer1_Sky" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.05, 0.0)
-motion_mirroring = Vector2(480, 0)
+motion_scale = Vector2(0.04, 0.0)
+motion_mirroring = Vector2(1280, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer1_Sky"]
 texture_filter = 1
-position = Vector2(215, 110)
+scale = Vector2(3.3333334, 3.3333334)
 texture = ExtResource("bg_l1")
-region_enabled = true
-region_rect = Rect2(0, 0, 432, 243)
+centered = false
 
 [node name="Layer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.1, 0.0)
-motion_mirroring = Vector2(480, 0)
+motion_mirroring = Vector2(1280, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer2"]
 texture_filter = 1
-position = Vector2(215, 130)
+scale = Vector2(3.3333334, 3.3333334)
 texture = ExtResource("bg_l2")
-region_enabled = true
-region_rect = Rect2(0, 0, 432, 243)
+centered = false
 
 [node name="Layer3" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.15, 0.0)
-motion_mirroring = Vector2(480, 0)
+motion_scale = Vector2(0.18, 0.0)
+motion_mirroring = Vector2(1280, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer3"]
 texture_filter = 1
-position = Vector2(215, 140)
+scale = Vector2(3.3333334, 3.3333334)
 texture = ExtResource("bg_l3")
-region_enabled = true
-region_rect = Rect2(0, 0, 432, 243)
+centered = false
 
 [node name="Layer4" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.2, 0.0)
-motion_mirroring = Vector2(480, 0)
+motion_scale = Vector2(0.28, 0.0)
+motion_mirroring = Vector2(1280, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer4"]
 texture_filter = 1
-position = Vector2(215, 145)
+scale = Vector2(3.3333334, 3.3333334)
 texture = ExtResource("bg_l4")
-region_enabled = true
-region_rect = Rect2(0, 0, 432, 243)
+centered = false
 
 [node name="Layer5" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.3, 0.0)
-motion_mirroring = Vector2(480, 0)
+motion_scale = Vector2(0.4, 0.0)
+motion_mirroring = Vector2(1280, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer5"]
 texture_filter = 1
-position = Vector2(215, 150)
+scale = Vector2(3.3333334, 3.3333334)
 texture = ExtResource("bg_l5")
-region_enabled = true
-region_rect = Rect2(0, 0, 432, 243)
+centered = false
 
 [node name="Layer6" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.45, 0.0)
-motion_mirroring = Vector2(480, 0)
+motion_scale = Vector2(0.55, 0.0)
+motion_mirroring = Vector2(1280, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer6"]
 texture_filter = 1
-position = Vector2(215, 155)
+scale = Vector2(3.3333334, 3.3333334)
 texture = ExtResource("bg_l6")
-region_enabled = true
-region_rect = Rect2(0, 0, 432, 243)
+centered = false
 
 [node name="Layer7_Front" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.6, 0.0)
-motion_mirroring = Vector2(480, 0)
+motion_scale = Vector2(0.7, 0.0)
+motion_mirroring = Vector2(1280, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer7_Front"]
 texture_filter = 1
-position = Vector2(215, 160)
+scale = Vector2(3.3333334, 3.3333334)
 texture = ExtResource("bg_l7")
-region_enabled = true
-region_rect = Rect2(0, 0, 432, 243)
+centered = false
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1403291081]
 texture_filter = 1

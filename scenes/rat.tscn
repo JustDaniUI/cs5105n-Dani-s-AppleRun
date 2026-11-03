@@ -1,7 +1,39 @@
 [gd_scene format=3]
 
-[ext_resource type="Texture2D" path="res://Assets/images/Pixel Enemies Free/rat base outline v2-Sheet.png" id="1_rat_tex"]
 [ext_resource type="Script" path="res://scripts/rat.gd" id="1_rat_scr"]
+[ext_resource type="Texture2D" path="res://Assets/images/Pixel Enemies Free/rat base outline v2-Sheet.png" id="1_rat_tex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idle_0"]
+atlas = ExtResource("1_rat_tex")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idle_1"]
+atlas = ExtResource("1_rat_tex")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idle_2"]
+atlas = ExtResource("1_rat_tex")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idle_3"]
+atlas = ExtResource("1_rat_tex")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idle_4"]
+atlas = ExtResource("1_rat_tex")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idle_5"]
+atlas = ExtResource("1_rat_tex")
+region = Rect2(320, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idle_6"]
+atlas = ExtResource("1_rat_tex")
+region = Rect2(384, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idle_7"]
+atlas = ExtResource("1_rat_tex")
+region = Rect2(448, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_run_0"]
 atlas = ExtResource("1_rat_tex")
@@ -42,38 +74,6 @@ region = Rect2(512, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_run_9"]
 atlas = ExtResource("1_rat_tex")
 region = Rect2(576, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_idle_0"]
-atlas = ExtResource("1_rat_tex")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_idle_1"]
-atlas = ExtResource("1_rat_tex")
-region = Rect2(64, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_idle_2"]
-atlas = ExtResource("1_rat_tex")
-region = Rect2(128, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_idle_3"]
-atlas = ExtResource("1_rat_tex")
-region = Rect2(192, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_idle_4"]
-atlas = ExtResource("1_rat_tex")
-region = Rect2(256, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_idle_5"]
-atlas = ExtResource("1_rat_tex")
-region = Rect2(320, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_idle_6"]
-atlas = ExtResource("1_rat_tex")
-region = Rect2(384, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_idle_7"]
-atlas = ExtResource("1_rat_tex")
-region = Rect2(448, 64, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rat"]
 animations = [{
@@ -159,12 +159,9 @@ autoplay = "running"
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_rat")
 
-[node name="FloorDetector" type="RayCast2D" parent="."]
-position = Vector2(-14, 6)
-target_position = Vector2(0, 16)
-
-[node name="WallDetector" type="RayCast2D" parent="."]
-position = Vector2(0, 4)
-target_position = Vector2(-16, 0)
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.6
+autostart = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

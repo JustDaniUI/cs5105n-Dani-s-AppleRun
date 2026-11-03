@@ -173,12 +173,9 @@ autoplay = "walk"
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_slime")
 
-[node name="FloorDetector" type="RayCast2D" parent="."]
-position = Vector2(-16, 6)
-target_position = Vector2(0, 16)
-
-[node name="WallDetector" type="RayCast2D" parent="."]
-position = Vector2(0, 4)
-target_position = Vector2(-16, 0)
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

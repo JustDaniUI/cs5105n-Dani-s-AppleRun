@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bvf8owfrf1e48"]
+﻿[gd_scene format=3 uid="uid://bvf8owfrf1e48"]
 
 [ext_resource type="Script" uid="uid://dy6vowqgxoxbw" path="res://scripts/apple.gd" id="1_3dmh2"]
 [ext_resource type="Texture2D" uid="uid://cbur6ere2g5ql" path="res://Assets/images/Collectibles/Collected.png" id="1_n78qv"]
@@ -196,6 +196,7 @@ shape = SubResource("CircleShape2D_13qdw")
 
 [node name="CollectedSound" type="AudioStreamPlayer2D" parent="." unique_id=168785036]
 stream = ExtResource("4_pg1xk")
+bus = &"SFX"
 pitch_scale = 1.56
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

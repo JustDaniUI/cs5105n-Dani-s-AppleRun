@@ -65,6 +65,7 @@ func _show_main_menu() -> void:
 	if pause_menu:
 		pause_menu.hide()
 	_clear_all_levels()
+	get_viewport().canvas_transform = Transform2D.IDENTITY
 	if home_screen:
 		home_screen.show()
 		var bg = home_screen.get_node_or_null("ParallaxBackground")

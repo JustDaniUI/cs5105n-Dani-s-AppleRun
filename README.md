@@ -405,3 +405,37 @@ The heart icons also use animations when their health state changes. The game us
 **Heart Animation and Fade Transition Demonstration**
 
 [Watch the heart animation and fade transition demonstration](snippets/HeartsUpdate.mp4)
+
+### Visual Polish, Settings & UI Overhaul
+
+The following screenshots document the recent visual overhauls, audio settings integration, bug fixing passes, and menu systems:
+
+**Revamped Levels & Multi-Layer Parallax Backgrounds**
+
+The level environments were overhauled with multi-layer forest parallax backgrounds featuring animated cloud cover, distant mountain ridges, and lush canopies, alongside textured terrain from the forest environment tileset.
+
+![Revamped Levels](snippets/Revamped%20Levels.png)
+
+**Bug Fixing & Physics Refactoring**
+
+Engineering and polish pass addressing enemy state machine parity (snail, rat, skeleton), physics boundary collision checks, entity duplication prevention on restart, and camera tracking.
+
+![Fixing Bugs](snippets/Fixing%20Bugs.png)
+
+**Interactive Main Menu**
+
+The title screen features randomized Minecraft-style splash messages ("Run for Apples... or is that it?", "An apple a day keeps the doctor away!"), clean stage navigation, and direct audio settings access.
+
+![MainMenu](snippets/MainMenu.png)
+
+**Audio Buses & Settings Configuration**
+
+Audio routing pipeline with Master, Music, and SFX volume sliders connected to Godot audio buses with real-time test feedback.
+
+![Audio Buses](snippets/Audio%20Buses.png)
+
+**In-Game Pause Screen**
+
+Pause menu overlay allowing players to resume gameplay, restart the active level from scratch, return to the main menu, or quit.
+
+![Pause Screen](snippets/Pause%20Screen.png)

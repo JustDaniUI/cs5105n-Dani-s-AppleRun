@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://iv6x4kj15j76" path="res://Assets/onlineAssets/forest environment tileset.png" id="forest_tiles"]
 [ext_resource type="Script" uid="uid://cl7bumjb8h4jn" path="res://scripts/parallax_scroll.gd" id="bg_script"]
 
+[ext_resource type="Texture2D" uid="uid://cjstdfdvfwgqp" path="res://Assets/onlineAssets/nature assets.png" id="nature_assets"]
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_djuqw"]
 texture = ExtResource("2_kn2gx")
 0:0/0 = 0
@@ -642,3 +644,52 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=2113013850]
 position = Vector2(408.33334, 28.666666)
 shape = SubResource("RectangleShape2D_xrivr")
+[node name="Decorations" type="Node2D" parent="." unique_id=9902001]
+
+[node name="Flower1" type="Sprite2D" parent="Decorations" unique_id=9902002]
+texture_filter = 1
+position = Vector2(20, 198)
+texture = ExtResource("nature_assets")
+region_enabled = true
+region_rect = Rect2(550, 0, 80, 122)
+scale = Vector2(0.18, 0.18)
+
+[node name="Grass1" type="Sprite2D" parent="Decorations" unique_id=9902003]
+texture_filter = 1
+position = Vector2(90, 200)
+texture = ExtResource("nature_assets")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 122)
+scale = Vector2(0.18, 0.18)
+
+[node name="Flower2" type="Sprite2D" parent="Decorations" unique_id=9902004]
+texture_filter = 1
+position = Vector2(200, 198)
+texture = ExtResource("nature_assets")
+region_enabled = true
+region_rect = Rect2(250, 0, 70, 122)
+scale = Vector2(0.2, 0.2)
+
+[node name="Grass2" type="Sprite2D" parent="Decorations" unique_id=9902005]
+texture_filter = 1
+position = Vector2(310, 200)
+texture = ExtResource("nature_assets")
+region_enabled = true
+region_rect = Rect2(380, 0, 80, 122)
+scale = Vector2(0.18, 0.18)
+
+[node name="Flower3" type="Sprite2D" parent="Decorations" unique_id=9902006]
+texture_filter = 1
+position = Vector2(390, 198)
+texture = ExtResource("nature_assets")
+region_enabled = true
+region_rect = Rect2(120, 0, 80, 122)
+scale = Vector2(0.18, 0.18)
+
+[node name="Grass3" type="Sprite2D" parent="Decorations" unique_id=9902007]
+texture_filter = 1
+position = Vector2(470, 200)
+texture = ExtResource("nature_assets")
+region_enabled = true
+region_rect = Rect2(550, 0, 80, 122)
+scale = Vector2(0.2, 0.2)

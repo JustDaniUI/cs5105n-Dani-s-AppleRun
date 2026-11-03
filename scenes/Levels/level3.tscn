@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bpyjle5fvja2p" path="res://Assets/onlineAssets/Forest layer9.png" id="bg_l9"]
 [ext_resource type="Texture2D" uid="uid://iv6x4kj15j76" path="res://Assets/onlineAssets/forest environment tileset.png" id="forest_tiles"]
 [ext_resource type="Script" uid="uid://cl7bumjb8h4jn" path="res://scripts/parallax_scroll.gd" id="bg_script"]
+[ext_resource type="Texture2D" uid="uid://cjstdfdvfwgqp" path="res://Assets/onlineAssets/nature assets.png" id="nature_assets"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_djuqw"]
 texture = ExtResource("2_c3r25")
@@ -654,3 +655,44 @@ position = Vector2(330, 120.00001)
 
 [node name="Moving Platform3" parent="Moving Platforms" unique_id=642442422 instance=ExtResource("7_c3r25")]
 position = Vector2(252.66666, 83.33333)
+[node name="Decorations" type="Node2D" parent="." unique_id=9903001]
+
+[node name="Grass1" type="Sprite2D" parent="Decorations" unique_id=9903002]
+texture_filter = 1
+position = Vector2(25, 198)
+texture = ExtResource("nature_assets")
+region_enabled = true
+region_rect = Rect2(120, 0, 80, 122)
+scale = Vector2(0.18, 0.18)
+
+[node name="Flower1" type="Sprite2D" parent="Decorations" unique_id=9903003]
+texture_filter = 1
+position = Vector2(110, 198)
+texture = ExtResource("nature_assets")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 122)
+scale = Vector2(0.18, 0.18)
+
+[node name="Grass2" type="Sprite2D" parent="Decorations" unique_id=9903004]
+texture_filter = 1
+position = Vector2(215, 200)
+texture = ExtResource("nature_assets")
+region_enabled = true
+region_rect = Rect2(380, 0, 80, 122)
+scale = Vector2(0.2, 0.2)
+
+[node name="Flower2" type="Sprite2D" parent="Decorations" unique_id=9903005]
+texture_filter = 1
+position = Vector2(360, 198)
+texture = ExtResource("nature_assets")
+region_enabled = true
+region_rect = Rect2(250, 0, 70, 122)
+scale = Vector2(0.18, 0.18)
+
+[node name="Grass3" type="Sprite2D" parent="Decorations" unique_id=9903006]
+texture_filter = 1
+position = Vector2(450, 200)
+texture = ExtResource("nature_assets")
+region_enabled = true
+region_rect = Rect2(550, 0, 80, 122)
+scale = Vector2(0.18, 0.18)

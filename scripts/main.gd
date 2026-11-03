@@ -25,7 +25,6 @@ func _ready() -> void:
 	# Connect HomeScreen signals
 	if home_screen:
 		home_screen.play_requested.connect(_on_home_play_requested)
-		home_screen.load_requested.connect(_on_home_load_requested)
 
 	# Check if launched directly from a save slot
 	if Engine.has_singleton("SaveLoad") or get_tree().root.has_node("SaveLoad"):
@@ -51,15 +50,21 @@ func _process(delta: float) -> void:
 
 # ── Menu & Game State Transitions ───────────────────────────────────────────
 
+func _clear_all_levels() -> void:
+	for child in get_children():
+		if child != $HUD and child != $Music:
+			remove_child(child)
+			child.queue_free()
+	current_level_root = null
+
+
 func _show_main_menu() -> void:
 	is_game_active = false
 	if score_panel:
 		score_panel.hide()
 	if pause_menu:
 		pause_menu.hide()
-	if current_level_root:
-		current_level_root.queue_free()
-		current_level_root = null
+	_clear_all_levels()
 	if home_screen:
 		home_screen.show()
 	fade.modulate.a = 0.0
@@ -78,20 +83,13 @@ func _start_game(p_level: int, p_score: int, p_health: int) -> void:
 		score_label.text = "SCORE: %s" % score
 
 	fade.modulate.a = 1.0
-	current_level_root = get_node_or_null("LevelRoot")
+	_clear_all_levels()
 	await _load_level(level, true, false)
 
 
 func _on_home_play_requested() -> void:
 	# Fresh game starts with score 0, level 1, 3 hearts
 	_start_game(1, 0, 3)
-
-
-func _on_home_load_requested(slot_data: Dictionary) -> void:
-	var l = slot_data.get("level", 1)
-	var s = slot_data.get("score", 0)
-	var h = slot_data.get("health", 3)
-	_start_game(l, s, h)
 
 
 # ── Level Management ────────────────────────────────────────────────────────
@@ -105,8 +103,8 @@ func _load_level(level_number: int, first_load: bool, reset_score: bool) -> void
 		score = 0
 		score_label.text = "SCORE: 0"
 
-	if current_level_root:
-		current_level_root.queue_free()
+	_clear_all_levels()
+	await get_tree().process_frame
 
 	# Change Level
 	var level_path = "res://scenes/Levels/level%s.tscn" % level_number

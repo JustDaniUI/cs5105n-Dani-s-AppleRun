@@ -30,8 +30,8 @@ func _on_timer_timeout() -> void:
 
 
 func _update_flip() -> void:
-	# Rat faces left by default in sprite sheet
-	animated_sprite_2d.flip_h = (direction > 0.0)
+	# Rat "running" frames (row y=64) face RIGHT in the sheet — flip when going LEFT
+	animated_sprite_2d.flip_h = (direction < 0.0)
 
 
 func _on_body_entered(body: Node2D) -> void:

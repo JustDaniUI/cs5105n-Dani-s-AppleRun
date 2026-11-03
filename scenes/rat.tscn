@@ -1,7 +1,7 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://qleq4royogem"]
 
-[ext_resource type="Script" path="res://scripts/rat.gd" id="1_rat_scr"]
-[ext_resource type="Texture2D" path="res://Assets/images/Pixel Enemies Free/rat base outline v2-Sheet.png" id="1_rat_tex"]
+[ext_resource type="Script" uid="uid://colr8n3861wev" path="res://scripts/rat.gd" id="1_rat_scr"]
+[ext_resource type="Texture2D" uid="uid://bit7i8ykpfdft" path="res://Assets/images/Pixel Enemies Free/rat base outline v2-Sheet.png" id="1_rat_tex"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_idle_0"]
 atlas = ExtResource("1_rat_tex")
@@ -35,45 +35,37 @@ region = Rect2(384, 64, 64, 64)
 atlas = ExtResource("1_rat_tex")
 region = Rect2(448, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_run_0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_77a1s"]
 atlas = ExtResource("1_rat_tex")
-region = Rect2(0, 0, 64, 64)
+region = Rect2(0, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_run_1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_acf8p"]
 atlas = ExtResource("1_rat_tex")
-region = Rect2(64, 0, 64, 64)
+region = Rect2(64, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_run_2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3csnj"]
 atlas = ExtResource("1_rat_tex")
-region = Rect2(128, 0, 64, 64)
+region = Rect2(128, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_run_3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6s34g"]
 atlas = ExtResource("1_rat_tex")
-region = Rect2(192, 0, 64, 64)
+region = Rect2(192, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_run_4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_368s2"]
 atlas = ExtResource("1_rat_tex")
-region = Rect2(256, 0, 64, 64)
+region = Rect2(256, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_run_5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnna8"]
 atlas = ExtResource("1_rat_tex")
-region = Rect2(320, 0, 64, 64)
+region = Rect2(320, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_run_6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_po2hf"]
 atlas = ExtResource("1_rat_tex")
-region = Rect2(384, 0, 64, 64)
+region = Rect2(384, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_run_7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0g0h3"]
 atlas = ExtResource("1_rat_tex")
-region = Rect2(448, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_run_8"]
-atlas = ExtResource("1_rat_tex")
-region = Rect2(512, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_run_9"]
-atlas = ExtResource("1_rat_tex")
-region = Rect2(576, 0, 64, 64)
+region = Rect2(448, 64, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rat"]
 animations = [{
@@ -102,64 +94,59 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_idle_7")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_run_0")
+"texture": SubResource("AtlasTexture_77a1s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_run_1")
+"texture": SubResource("AtlasTexture_acf8p")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_run_2")
+"texture": SubResource("AtlasTexture_3csnj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_run_3")
+"texture": SubResource("AtlasTexture_6s34g")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_run_4")
+"texture": SubResource("AtlasTexture_368s2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_run_5")
+"texture": SubResource("AtlasTexture_nnna8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_run_6")
+"texture": SubResource("AtlasTexture_po2hf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_run_7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_run_8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_run_9")
+"texture": SubResource("AtlasTexture_0g0h3")
 }],
-"loop": true,
+"loop": 1,
 "name": &"running",
 "speed": 14.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rat"]
-size = Vector2(24, 14)
+size = Vector2(29, 26)
 
-[node name="Rat" type="Area2D"]
+[node name="Rat" type="Area2D" unique_id=163071833]
 script = ExtResource("1_rat_scr")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1978114164]
 texture_filter = 1
 position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_rat")
 animation = &"running"
 autoplay = "running"
+frame_progress = 0.43176162
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=177701060]
+position = Vector2(-3.5, -3)
 shape = SubResource("RectangleShape2D_rat")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=278187773]
 wait_time = 1.6
 autostart = true
 

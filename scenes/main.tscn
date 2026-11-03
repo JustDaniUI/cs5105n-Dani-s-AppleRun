@@ -1,8 +1,8 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://5c6k5johlf4a"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_0wfyh"]
-[ext_resource type="FontFile" path="res://Assets/fonts/Square-Black.ttf" id="2_sugp2"]
-[ext_resource type="AudioStream" path="res://Assets/sounds/music.ogg" id="3_jyhfs"]
+[ext_resource type="Script" uid="uid://b231yc02gvg55" path="res://scripts/main.gd" id="1_0wfyh"]
+[ext_resource type="FontFile" uid="uid://vqoajl5yc7t3" path="res://Assets/fonts/Square-Black.ttf" id="2_sugp2"]
+[ext_resource type="AudioStream" uid="uid://d2bd5mmdfr483" path="res://Assets/sounds/music.ogg" id="3_jyhfs"]
 [ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="4_pause"]
 [ext_resource type="PackedScene" path="res://scenes/home_screen.tscn" id="5_home"]
 
@@ -21,8 +21,6 @@ shadow_size = 5
 
 [node name="Main" type="Node2D" unique_id=522951915]
 script = ExtResource("1_0wfyh")
-
-[node name="LevelRoot" type="Node2D" parent="." unique_id=1127601915]
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=842732713]
 layer = 10

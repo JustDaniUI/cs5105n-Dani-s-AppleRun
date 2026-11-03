@@ -65,30 +65,6 @@ corner_radius_bottom_left = 10
 shadow_color = Color(0, 0, 0, 0.7)
 shadow_size = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slot_card"]
-bg_color = Color(0.18, 0.18, 0.22, 0.9)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.4, 0.4, 0.45, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_danger"]
-bg_color = Color(0.6, 0.15, 0.15, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.8, 0.3, 0.3, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-
 [node name="HomeScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -234,17 +210,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
 theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
 text = "PLAY GAME"
-
-[node name="BtnLoad" type="Button" parent="MainPanel/VBoxContainer"]
-custom_minimum_size = Vector2(280, 50)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("14_font")
-theme_override_font_sizes/font_size = 24
-theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
-theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
-text = "LOAD GAME"
 
 [node name="BtnSettings" type="Button" parent="MainPanel/VBoxContainer"]
 custom_minimum_size = Vector2(280, 50)
@@ -395,162 +360,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
 theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
 text = "BACK"
 
-[node name="LoadPanel" type="Panel" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -230.0
-offset_right = 300.0
-offset_bottom = 230.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_modal")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="LoadPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 32.0
-offset_top = 24.0
-offset_right = -32.0
-offset_bottom = -24.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 14
-
-[node name="LoadTitle" type="Label" parent="LoadPanel/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.96, 0.85, 0.2, 1)
-theme_override_fonts/font = ExtResource("14_font")
-theme_override_font_sizes/font_size = 30
-text = "SELECT SAVE SLOT"
-horizontal_alignment = 1
-
-[node name="Slot1" type="PanelContainer" parent="LoadPanel/VBoxContainer"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_slot_card")
-
-[node name="HBox" type="HBoxContainer" parent="LoadPanel/VBoxContainer/Slot1"]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="InfoLabel" type="Label" parent="LoadPanel/VBoxContainer/Slot1/HBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("14_font")
-theme_override_font_sizes/font_size = 18
-text = "Slot 1: Empty"
-
-[node name="BtnLoadSlot" type="Button" parent="LoadPanel/VBoxContainer/Slot1/HBox"]
-custom_minimum_size = Vector2(130, 40)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("14_font")
-theme_override_font_sizes/font_size = 18
-theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
-theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
-text = "Load"
-
-[node name="BtnDeleteSlot" type="Button" parent="LoadPanel/VBoxContainer/Slot1/HBox"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("14_font")
-theme_override_font_sizes/font_size = 18
-theme_override_styles/hover = SubResource("StyleBoxFlat_btn_danger")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_danger")
-theme_override_styles/normal = SubResource("StyleBoxFlat_btn_danger")
-text = "X"
-
-[node name="Slot2" type="PanelContainer" parent="LoadPanel/VBoxContainer"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_slot_card")
-
-[node name="HBox" type="HBoxContainer" parent="LoadPanel/VBoxContainer/Slot2"]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="InfoLabel" type="Label" parent="LoadPanel/VBoxContainer/Slot2/HBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("14_font")
-theme_override_font_sizes/font_size = 18
-text = "Slot 2: Empty"
-
-[node name="BtnLoadSlot" type="Button" parent="LoadPanel/VBoxContainer/Slot2/HBox"]
-custom_minimum_size = Vector2(130, 40)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("14_font")
-theme_override_font_sizes/font_size = 18
-theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
-theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
-text = "Load"
-
-[node name="BtnDeleteSlot" type="Button" parent="LoadPanel/VBoxContainer/Slot2/HBox"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("14_font")
-theme_override_font_sizes/font_size = 18
-theme_override_styles/hover = SubResource("StyleBoxFlat_btn_danger")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_danger")
-theme_override_styles/normal = SubResource("StyleBoxFlat_btn_danger")
-text = "X"
-
-[node name="Slot3" type="PanelContainer" parent="LoadPanel/VBoxContainer"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_slot_card")
-
-[node name="HBox" type="HBoxContainer" parent="LoadPanel/VBoxContainer/Slot3"]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="InfoLabel" type="Label" parent="LoadPanel/VBoxContainer/Slot3/HBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("14_font")
-theme_override_font_sizes/font_size = 18
-text = "Slot 3: Empty"
-
-[node name="BtnLoadSlot" type="Button" parent="LoadPanel/VBoxContainer/Slot3/HBox"]
-custom_minimum_size = Vector2(130, 40)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("14_font")
-theme_override_font_sizes/font_size = 18
-theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
-theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
-text = "Load"
-
-[node name="BtnDeleteSlot" type="Button" parent="LoadPanel/VBoxContainer/Slot3/HBox"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("14_font")
-theme_override_font_sizes/font_size = 18
-theme_override_styles/hover = SubResource("StyleBoxFlat_btn_danger")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_danger")
-theme_override_styles/normal = SubResource("StyleBoxFlat_btn_danger")
-text = "X"
-
-[node name="Spacer" type="Control" parent="LoadPanel/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="BtnLoadBack" type="Button" parent="LoadPanel/VBoxContainer"]
-custom_minimum_size = Vector2(200, 46)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("14_font")
-theme_override_font_sizes/font_size = 22
-theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
-theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
-text = "BACK"
 
 [node name="TestSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_sfx")
@@ -562,17 +371,9 @@ autoplay = true
 bus = &"Music"
 
 [connection signal="pressed" from="MainPanel/VBoxContainer/BtnPlay" to="." method="_on_btn_play_pressed"]
-[connection signal="pressed" from="MainPanel/VBoxContainer/BtnLoad" to="." method="_on_btn_load_pressed"]
 [connection signal="pressed" from="MainPanel/VBoxContainer/BtnSettings" to="." method="_on_btn_settings_pressed"]
 [connection signal="pressed" from="MainPanel/VBoxContainer/BtnQuit" to="." method="_on_btn_quit_pressed"]
 [connection signal="value_changed" from="SettingsPanel/VBoxContainer/MasterRow/MasterSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="SettingsPanel/VBoxContainer/MusicRow/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="SettingsPanel/VBoxContainer/SFXRow/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="pressed" from="SettingsPanel/VBoxContainer/BtnSettingsBack" to="." method="_on_settings_back_pressed"]
-[connection signal="pressed" from="LoadPanel/VBoxContainer/Slot1/HBox/BtnLoadSlot" to="." method="_on_slot1_load_pressed"]
-[connection signal="pressed" from="LoadPanel/VBoxContainer/Slot1/HBox/BtnDeleteSlot" to="." method="_on_slot1_delete_pressed"]
-[connection signal="pressed" from="LoadPanel/VBoxContainer/Slot2/HBox/BtnLoadSlot" to="." method="_on_slot2_load_pressed"]
-[connection signal="pressed" from="LoadPanel/VBoxContainer/Slot2/HBox/BtnDeleteSlot" to="." method="_on_slot2_delete_pressed"]
-[connection signal="pressed" from="LoadPanel/VBoxContainer/Slot3/HBox/BtnLoadSlot" to="." method="_on_slot3_load_pressed"]
-[connection signal="pressed" from="LoadPanel/VBoxContainer/Slot3/HBox/BtnDeleteSlot" to="." method="_on_slot3_delete_pressed"]
-[connection signal="pressed" from="LoadPanel/VBoxContainer/BtnLoadBack" to="." method="_on_load_back_pressed"]

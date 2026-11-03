@@ -3,6 +3,23 @@ extends Control
 signal play_requested
 signal load_requested(slot_data: Dictionary)
 
+# Minecraft-style rotating splash texts
+const SPLASH_TEXTS: Array[String] = [
+	"Run for Apples... or is that it?",
+	"An apple a day keeps the doctor away!",
+	"Look out for mobs!",
+	"This game is all about apples btw",
+	"100% apple-approved!",
+	"Snails... why did it have to be snails?",
+	"Collect all the apples!",
+	"Jump higher! No, higher!",
+	"Warning: Contains apples.",
+	"Is that a skeleton?!",
+	"More apples = more fun. Probably.",
+	"Apples are just fancy fruit, fight me.",
+	"Professional apple runner",
+]
+
 # Audio bus indices
 var bus_master : int = 0
 var bus_music  : int = 1
@@ -10,7 +27,7 @@ var bus_sfx    : int = 2
 
 @onready var main_panel     : Control   = $MainPanel
 @onready var settings_panel : Control   = $SettingsPanel
-@onready var load_panel     : Control   = $LoadPanel
+@onready var subtitle_label : Label     = $MainPanel/VBoxContainer/TitleBox/SubtitleLabel
 
 # Settings sliders & value labels
 @onready var master_slider  : HSlider   = $SettingsPanel/VBoxContainer/MasterRow/MasterSlider
@@ -20,19 +37,6 @@ var bus_sfx    : int = 2
 @onready var sfx_slider     : HSlider   = $SettingsPanel/VBoxContainer/SFXRow/SFXSlider
 @onready var sfx_val        : Label     = $SettingsPanel/VBoxContainer/SFXRow/SFXVal
 @onready var test_sound     : AudioStreamPlayer = $TestSFX
-
-# Slot labels & buttons
-@onready var slot1_info     : Label     = $LoadPanel/VBoxContainer/Slot1/InfoLabel
-@onready var slot1_btn      : Button    = $LoadPanel/VBoxContainer/Slot1/BtnLoadSlot
-@onready var slot1_del      : Button    = $LoadPanel/VBoxContainer/Slot1/BtnDeleteSlot
-
-@onready var slot2_info     : Label     = $LoadPanel/VBoxContainer/Slot2/InfoLabel
-@onready var slot2_btn      : Button    = $LoadPanel/VBoxContainer/Slot2/BtnLoadSlot
-@onready var slot2_del      : Button    = $LoadPanel/VBoxContainer/Slot2/BtnDeleteSlot
-
-@onready var slot3_info     : Label     = $LoadPanel/VBoxContainer/Slot3/InfoLabel
-@onready var slot3_btn      : Button    = $LoadPanel/VBoxContainer/Slot3/BtnLoadSlot
-@onready var slot3_del      : Button    = $LoadPanel/VBoxContainer/Slot3/BtnDeleteSlot
 
 
 func _ready() -> void:
@@ -45,6 +49,10 @@ func _ready() -> void:
 	if bus_music < 0:  bus_music = 0
 	if bus_sfx < 0:    bus_sfx = 0
 
+	# Pick a random splash text
+	if subtitle_label:
+		subtitle_label.text = SPLASH_TEXTS[randi() % SPLASH_TEXTS.size()]
+
 	# Initial panel visibility
 	_show_main_panel()
 
@@ -52,25 +60,18 @@ func _ready() -> void:
 	_init_audio_sliders()
 
 
-# ── Navigation ───────────────────────────────────────────────────────────────
+# ── Navigation ────────────────────────────────────────────────────────────────
 
 func _show_main_panel() -> void:
 	main_panel.visible = true
 	settings_panel.visible = false
-	load_panel.visible = false
+	if subtitle_label:
+		subtitle_label.text = SPLASH_TEXTS[randi() % SPLASH_TEXTS.size()]
 
 
 func _show_settings_panel() -> void:
 	main_panel.visible = false
 	settings_panel.visible = true
-	load_panel.visible = false
-
-
-func _show_load_panel() -> void:
-	main_panel.visible = false
-	settings_panel.visible = false
-	load_panel.visible = true
-	_refresh_slots()
 
 
 # ── Main Menu Buttons ─────────────────────────────────────────────────────────
@@ -91,10 +92,6 @@ func _on_btn_play_pressed() -> void:
 
 func _on_btn_settings_pressed() -> void:
 	_show_settings_panel()
-
-
-func _on_btn_load_pressed() -> void:
-	_show_load_panel()
 
 
 func _on_btn_quit_pressed() -> void:
@@ -150,76 +147,4 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 
 
 func _on_settings_back_pressed() -> void:
-	_show_main_panel()
-
-
-# ── Load Panel & 3 Slots ─────────────────────────────────────────────────────
-
-func _refresh_slots() -> void:
-	_setup_slot_row(1, slot1_info, slot1_btn, slot1_del)
-	_setup_slot_row(2, slot2_info, slot2_btn, slot2_del)
-	_setup_slot_row(3, slot3_info, slot3_btn, slot3_del)
-
-
-func _setup_slot_row(slot_idx: int, info_lbl: Label, load_btn: Button, del_btn: Button) -> void:
-	var meta = SaveLoad.get_slot_metadata(slot_idx)
-	if meta.is_empty():
-		info_lbl.text = "Slot %d: Empty" % slot_idx
-		load_btn.text = "Start New"
-		del_btn.visible = false
-	else:
-		info_lbl.text = "Slot %d: Level %s | Score: %s | Hearts: %s" % [
-			slot_idx,
-			meta.get("level", 1),
-			meta.get("score", 0),
-			meta.get("health", 3)
-		]
-		load_btn.text = "Load Slot %d" % slot_idx
-		del_btn.visible = true
-
-
-func _load_slot(slot_idx: int) -> void:
-	var data = SaveLoad.load_slot(slot_idx)
-	if data.is_empty():
-		SaveLoad.is_loading_saved_game = false
-		SaveLoad.active_slot = slot_idx
-		SaveLoad.loaded_data = {
-			"score": 0,
-			"level": 1,
-			"health": 3
-		}
-	else:
-		SaveLoad.is_loading_saved_game = true
-		SaveLoad.active_slot = slot_idx
-		SaveLoad.loaded_data = data
-
-	load_requested.emit(SaveLoad.loaded_data)
-	if get_parent() == get_tree().root:
-		get_tree().change_scene_to_file("res://scenes/main.tscn")
-
-
-func _delete_slot(slot_idx: int) -> void:
-	SaveLoad.delete_slot(slot_idx)
-	_refresh_slots()
-
-
-func _on_slot1_load_pressed() -> void:
-	_load_slot(1)
-
-func _on_slot1_delete_pressed() -> void:
-	_delete_slot(1)
-
-func _on_slot2_load_pressed() -> void:
-	_load_slot(2)
-
-func _on_slot2_delete_pressed() -> void:
-	_delete_slot(2)
-
-func _on_slot3_load_pressed() -> void:
-	_load_slot(3)
-
-func _on_slot3_delete_pressed() -> void:
-	_delete_slot(3)
-
-func _on_load_back_pressed() -> void:
 	_show_main_panel()

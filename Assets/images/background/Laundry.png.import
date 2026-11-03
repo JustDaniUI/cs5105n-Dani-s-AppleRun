@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://r8ohnpk0yjkv"
-path="res://.godot/imported/Laundry.png-3da4819f7dac3c439249ece86faedefe.ctex"
+path="res://.godot/imported/Laundry.png-8b4fe7e107fb194e917a9d38e491b353.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/onlineAssets/Pixel Art Tiles and Backgrounds - Mountains/Pixel Art Tiles and Backgrounds - Mountains/Decoration/Laundry.png"
-dest_files=["res://.godot/imported/Laundry.png-3da4819f7dac3c439249ece86faedefe.ctex"]
+source_file="res://Assets/images/background/Laundry.png"
+dest_files=["res://.godot/imported/Laundry.png-8b4fe7e107fb194e917a9d38e491b353.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cypnnb36ct4is"
-path="res://.godot/imported/Tree 3.png-78755666ad683d3b973a47461a7e9732.ctex"
+path="res://.godot/imported/Tree 3.png-bebc7b50b733f45210367582d2bc8508.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/onlineAssets/Pixel Art Tiles and Backgrounds - Mountains/Pixel Art Tiles and Backgrounds - Mountains/Decoration/Tree 3.png"
-dest_files=["res://.godot/imported/Tree 3.png-78755666ad683d3b973a47461a7e9732.ctex"]
+source_file="res://Assets/images/background/Tree 3.png"
+dest_files=["res://.godot/imported/Tree 3.png-bebc7b50b733f45210367582d2bc8508.ctex"]
 
 [params]
 

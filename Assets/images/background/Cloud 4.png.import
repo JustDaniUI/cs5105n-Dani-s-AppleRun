@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://caac8603ajcfs"
-path="res://.godot/imported/Cloud 4.png-3073c4b0ff8eca0e641c86d56b144097.ctex"
+path="res://.godot/imported/Cloud 4.png-c269c6e6214b341ccc93a5896c7d3d07.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/onlineAssets/Pixel Art Tiles and Backgrounds - Mountains/Pixel Art Tiles and Backgrounds - Mountains/Decoration/Cloud 4.png"
-dest_files=["res://.godot/imported/Cloud 4.png-3073c4b0ff8eca0e641c86d56b144097.ctex"]
+source_file="res://Assets/images/background/Cloud 4.png"
+dest_files=["res://.godot/imported/Cloud 4.png-c269c6e6214b341ccc93a5896c7d3d07.ctex"]
 
 [params]
 

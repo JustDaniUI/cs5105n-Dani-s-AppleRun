@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dgaghcapvojmj"
-path="res://.godot/imported/Mountains 4.png-adc841016326e0b9e335f4ffa412edb8.ctex"
+path="res://.godot/imported/Mountains 4.png-e1ba7456f3a8d5ee1772e5310881fa19.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/onlineAssets/Pixel Art Tiles and Backgrounds - Mountains/Pixel Art Tiles and Backgrounds - Mountains/Backgrounds/Mountains 4.png"
-dest_files=["res://.godot/imported/Mountains 4.png-adc841016326e0b9e335f4ffa412edb8.ctex"]
+source_file="res://Assets/images/background/Mountains 4.png"
+dest_files=["res://.godot/imported/Mountains 4.png-e1ba7456f3a8d5ee1772e5310881fa19.ctex"]
 
 [params]
 

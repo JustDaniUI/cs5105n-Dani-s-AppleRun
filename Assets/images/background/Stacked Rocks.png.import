@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://kg8327cf8fh8"
-path="res://.godot/imported/Stacked Rocks.png-59c975202b6c58ef5939052faab0ac47.ctex"
+path="res://.godot/imported/Stacked Rocks.png-03876cf9a10714bcd4a88cc4e9c5c03f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/onlineAssets/Pixel Art Tiles and Backgrounds - Mountains/Pixel Art Tiles and Backgrounds - Mountains/Decoration/Stacked Rocks.png"
-dest_files=["res://.godot/imported/Stacked Rocks.png-59c975202b6c58ef5939052faab0ac47.ctex"]
+source_file="res://Assets/images/background/Stacked Rocks.png"
+dest_files=["res://.godot/imported/Stacked Rocks.png-03876cf9a10714bcd4a88cc4e9c5c03f.ctex"]
 
 [params]
 

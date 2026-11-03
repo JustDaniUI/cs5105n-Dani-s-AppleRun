@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ca8f3co7vpx3k"
-path="res://.godot/imported/Rock 4.png-48fc4edd29eef107a2035a1d7d2ae5f7.ctex"
+path="res://.godot/imported/Rock 4.png-d57b3a68d09f108739b40bdece56cee3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/onlineAssets/Pixel Art Tiles and Backgrounds - Mountains/Pixel Art Tiles and Backgrounds - Mountains/Decoration/Rock 4.png"
-dest_files=["res://.godot/imported/Rock 4.png-48fc4edd29eef107a2035a1d7d2ae5f7.ctex"]
+source_file="res://Assets/images/background/Rock 4.png"
+dest_files=["res://.godot/imported/Rock 4.png-d57b3a68d09f108739b40bdece56cee3.ctex"]
 
 [params]
 

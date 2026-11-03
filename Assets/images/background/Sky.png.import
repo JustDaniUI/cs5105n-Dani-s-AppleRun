@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cb0q3a143aktj"
-path="res://.godot/imported/Sky.png-801d39d6367889ef1a9fb5d47294d011.ctex"
+path="res://.godot/imported/Sky.png-78a992b5956259e2fa846f95c549580d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/onlineAssets/Pixel Art Tiles and Backgrounds - Mountains/Pixel Art Tiles and Backgrounds - Mountains/Backgrounds/Sky.png"
-dest_files=["res://.godot/imported/Sky.png-801d39d6367889ef1a9fb5d47294d011.ctex"]
+source_file="res://Assets/images/background/Sky.png"
+dest_files=["res://.godot/imported/Sky.png-78a992b5956259e2fa846f95c549580d.ctex"]
 
 [params]
 

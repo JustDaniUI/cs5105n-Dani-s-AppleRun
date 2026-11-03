@@ -29,8 +29,9 @@ func _on_resume_button_pressed() -> void:
 func _on_restart_button_pressed() -> void:
 	resume()
 	var main_node = get_tree().root.find_child("Main", true, false)
-	if main_node and main_node.has_method("_load_level"):
-		main_node._load_level(main_node.level, false, true)
+	if main_node and main_node.has_method("_start_game"):
+		# Restart current level entirely (reset score, keep level number)
+		main_node._start_game(main_node.level, 0, 3)
 	else:
 		get_tree().reload_current_scene()
 

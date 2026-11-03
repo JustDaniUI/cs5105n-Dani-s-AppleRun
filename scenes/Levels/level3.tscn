@@ -1,12 +1,10 @@
-[gd_scene format=4 uid="uid://l0e6mabdc62j"]
+[gd_scene format=3]
 
-[ext_resource type="Texture2D" uid="uid://cdfljv4nbkvx0" path="res://Assets/images/background/Blue.png" id="1_c3r25"]
-[ext_resource type="Texture2D" uid="uid://bqdb0ikefxxf1" path="res://Assets/images/Tilemap/Terrain (16x16).png" id="2_c3r25"]
-[ext_resource type="PackedScene" uid="uid://c35mh674qy6h" path="res://scenes/player.tscn" id="3_55lrb"]
-[ext_resource type="PackedScene" uid="uid://diy2k8ritgwu7" path="res://scenes/snail.tscn" id="4_cpagj"]
-[ext_resource type="PackedScene" uid="uid://bvf8owfrf1e48" path="res://scenes/apple.tscn" id="5_mdtll"]
-[ext_resource type="Texture2D" uid="uid://dq0iunxp3yco5" path="res://Assets/images/Tilemap/Checkpoint (Flag Idle)(64x64).png" id="6_4a7ko"]
-[ext_resource type="PackedScene" uid="uid://dt5t15f8cqaj7" path="res://scenes/moving_platform.tscn" id="7_c3r25"]
+[ext_resource type="Texture2D" path="res://Assets/images/Tilemap/Terrain (16x16).png" id="2_c3r25"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="3_55lrb"]
+[ext_resource type="PackedScene" path="res://scenes/apple.tscn" id="5_mdtll"]
+[ext_resource type="Texture2D" path="res://Assets/images/Tilemap/Checkpoint (Flag Idle)(64x64).png" id="6_4a7ko"]
+[ext_resource type="PackedScene" path="res://scenes/moving_platform.tscn" id="7_c3r25"]
 [ext_resource type="Texture2D" path="res://Assets/images/background/Sky.png" id="8_sky"]
 [ext_resource type="Texture2D" path="res://Assets/images/background/Mountains 3.png" id="9_mountains"]
 [ext_resource type="Texture2D" path="res://Assets/images/background/Standing Torch.png" id="10_torch"]
@@ -395,9 +393,9 @@ size = Vector2(20, 32)
 [node name="LevelRoot" type="Node2D" unique_id=1754574949]
 scale = Vector2(3, 3)
 
-[node name="Decorations" type="Node2D" parent="."]
+[node name="Decorations" type="Node2D" parent="." unique_id=307052647]
 
-[node name="Sky" type="TextureRect" parent="Decorations"]
+[node name="Sky" type="TextureRect" parent="Decorations" unique_id=565390498]
 texture_filter = 1
 offset_right = 430.0
 offset_bottom = 240.0
@@ -405,7 +403,8 @@ texture = ExtResource("8_sky")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Mountains" type="TextureRect" parent="Decorations"]
+[node name="Mountains" type="TextureRect" parent="Decorations" unique_id=727225449]
+modulate = Color(1, 1, 1, 0.75)
 texture_filter = 1
 offset_top = 70.0
 offset_right = 430.0
@@ -413,33 +412,32 @@ offset_bottom = 240.0
 texture = ExtResource("9_mountains")
 expand_mode = 1
 stretch_mode = 6
-modulate = Color(1, 1, 1, 0.75)
 
-[node name="Cloud" type="Sprite2D" parent="Decorations"]
+[node name="Cloud" type="Sprite2D" parent="Decorations" unique_id=1296436377]
 texture_filter = 1
 position = Vector2(150, 25)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("13_cloud")
 
-[node name="TorchLeft" type="Sprite2D" parent="Decorations"]
+[node name="TorchLeft" type="Sprite2D" parent="Decorations" unique_id=453969235]
 texture_filter = 1
 position = Vector2(60, 150)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_torch")
 
-[node name="TorchRight" type="Sprite2D" parent="Decorations"]
+[node name="TorchRight" type="Sprite2D" parent="Decorations" unique_id=170405909]
 texture_filter = 1
 position = Vector2(380, 150)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_torch")
 
-[node name="Barrel" type="Sprite2D" parent="Decorations"]
+[node name="Barrel" type="Sprite2D" parent="Decorations" unique_id=1315119556]
 texture_filter = 1
 position = Vector2(110, 175)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("11_barrel")
 
-[node name="Rocks" type="Sprite2D" parent="Decorations"]
+[node name="Rocks" type="Sprite2D" parent="Decorations" unique_id=458021289]
 texture_filter = 1
 position = Vector2(280, 175)
 scale = Vector2(0.6, 0.6)
@@ -455,11 +453,11 @@ position = Vector2(12, 174.66667)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=84064416]
 
-[node name="Rat" parent="Enemies" instance=ExtResource("14_rat")]
-position = Vector2(179, 180)
+[node name="Rat" parent="Enemies" unique_id=509852767 instance=ExtResource("14_rat")]
+position = Vector2(184, 182.66667)
 
-[node name="Skeleton" parent="Enemies" instance=ExtResource("15_skel")]
-position = Vector2(335.3333, 180.33333)
+[node name="Skeleton" parent="Enemies" unique_id=1107887185 instance=ExtResource("15_skel")]
+position = Vector2(337.33334, 177)
 
 [node name="Apples" type="Node2D" parent="." unique_id=714780]
 

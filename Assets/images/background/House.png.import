@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b1uccgcm3eu8v"
-path="res://.godot/imported/House.png-f2339575fc849a91a7c4b4eae2103592.ctex"
+path="res://.godot/imported/House.png-bdfbca44d330def0a58d7641b77f23ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/onlineAssets/Pixel Art Tiles and Backgrounds - Mountains/Pixel Art Tiles and Backgrounds - Mountains/Decoration/House.png"
-dest_files=["res://.godot/imported/House.png-f2339575fc849a91a7c4b4eae2103592.ctex"]
+source_file="res://Assets/images/background/House.png"
+dest_files=["res://.godot/imported/House.png-bdfbca44d330def0a58d7641b77f23ba.ctex"]
 
 [params]
 

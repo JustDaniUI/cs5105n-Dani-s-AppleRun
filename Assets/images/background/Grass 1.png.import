@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ct0jpays5a14k"
-path="res://.godot/imported/Grass 1.png-1379485827f73fa7c14d0fa17ec68608.ctex"
+path="res://.godot/imported/Grass 1.png-3c7b1afb947424430ea91500820fdbff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/onlineAssets/Pixel Art Tiles and Backgrounds - Mountains/Pixel Art Tiles and Backgrounds - Mountains/Decoration/Grass 1.png"
-dest_files=["res://.godot/imported/Grass 1.png-1379485827f73fa7c14d0fa17ec68608.ctex"]
+source_file="res://Assets/images/background/Grass 1.png"
+dest_files=["res://.godot/imported/Grass 1.png-3c7b1afb947424430ea91500820fdbff.ctex"]
 
 [params]
 

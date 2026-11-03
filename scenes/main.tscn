@@ -19,15 +19,15 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 shadow_size = 5
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=522951915]
 script = ExtResource("1_0wfyh")
 
-[node name="LevelRoot" type="Node2D" parent="."]
+[node name="LevelRoot" type="Node2D" parent="." unique_id=1127601915]
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=842732713]
 layer = 10
 
-[node name="ScorePannel" type="Panel" parent="HUD"]
+[node name="ScorePannel" type="Panel" parent="HUD" unique_id=1250135403]
 visible = false
 anchors_preset = 5
 anchor_left = 0.5
@@ -39,7 +39,7 @@ offset_bottom = 100.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xrivr")
 
-[node name="ScoreLabel" type="Label" parent="HUD/ScorePannel"]
+[node name="ScoreLabel" type="Label" parent="HUD/ScorePannel" unique_id=349009417]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -56,7 +56,7 @@ theme_override_fonts/font = ExtResource("2_sugp2")
 theme_override_font_sizes/font_size = 32
 text = "SCORE: 0"
 
-[node name="Fade" type="ColorRect" parent="HUD"]
+[node name="Fade" type="ColorRect" parent="HUD" unique_id=1178724594]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -66,11 +66,11 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="PauseMenu" parent="HUD" instance=ExtResource("4_pause")]
+[node name="PauseMenu" parent="HUD" unique_id=1943866982 instance=ExtResource("4_pause")]
 visible = false
 
-[node name="HomeScreen" parent="HUD" instance=ExtResource("5_home")]
+[node name="HomeScreen" parent="HUD" unique_id=1832150267 instance=ExtResource("5_home")]
 
-[node name="Music" type="AudioStreamPlayer2D" parent="."]
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=140190357]
 stream = ExtResource("3_jyhfs")
 bus = &"Music"

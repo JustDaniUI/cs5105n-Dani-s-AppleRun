@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://6mkcc5lr3hus"
-path="res://.godot/imported/Fence 1.png-9e994554266cc9831fca75c858b0b26d.ctex"
+path="res://.godot/imported/Fence 1.png-c4cda41cf902ec654e6dfdf0c605e4de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/onlineAssets/Pixel Art Tiles and Backgrounds - Mountains/Pixel Art Tiles and Backgrounds - Mountains/Decoration/Fence 1.png"
-dest_files=["res://.godot/imported/Fence 1.png-9e994554266cc9831fca75c858b0b26d.ctex"]
+source_file="res://Assets/images/background/Fence 1.png"
+dest_files=["res://.godot/imported/Fence 1.png-c4cda41cf902ec654e6dfdf0c605e4de.ctex"]
 
 [params]
 

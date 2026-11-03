@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cixf85mn8w7ed"
-path="res://.godot/imported/Flower 4.png-96ed7f434175899c9d6c7b4e98d7466c.ctex"
+path="res://.godot/imported/Flower 4.png-1fd87520814b991af7a12b968408ef1e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/onlineAssets/Pixel Art Tiles and Backgrounds - Mountains/Pixel Art Tiles and Backgrounds - Mountains/Decoration/Flower 4.png"
-dest_files=["res://.godot/imported/Flower 4.png-96ed7f434175899c9d6c7b4e98d7466c.ctex"]
+source_file="res://Assets/images/background/Flower 4.png"
+dest_files=["res://.godot/imported/Flower 4.png-1fd87520814b991af7a12b968408ef1e.ctex"]
 
 [params]
 

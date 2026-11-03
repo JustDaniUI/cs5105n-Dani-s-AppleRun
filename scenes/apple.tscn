@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://bvf8owfrf1e48"]
+[gd_scene format=3]
 
-[ext_resource type="Script" uid="uid://dy6vowqgxoxbw" path="res://scripts/apple.gd" id="1_3dmh2"]
-[ext_resource type="Texture2D" uid="uid://cbur6ere2g5ql" path="res://Assets/images/Collectibles/Collected.png" id="1_n78qv"]
-[ext_resource type="Texture2D" uid="uid://3ywa0hpj12u" path="res://Assets/images/Collectibles/Apple.png" id="2_whgpf"]
-[ext_resource type="AudioStream" uid="uid://bn2jab2f3qqlb" path="res://Assets/sounds/collect_apple.wav" id="4_pg1xk"]
+[ext_resource type="Script" path="res://scripts/apple.gd" id="1_3dmh2"]
+[ext_resource type="Texture2D" path="res://Assets/images/Collectibles/Collected.png" id="1_n78qv"]
+[ext_resource type="Texture2D" path="res://Assets/images/Collectibles/Apple.png" id="2_whgpf"]
+[ext_resource type="AudioStream" path="res://Assets/sounds/collect_apple.wav" id="4_pg1xk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xniv1"]
 atlas = ExtResource("1_n78qv")

@@ -1,13 +1,13 @@
-[gd_scene format=3 uid="uid://c35mh674qy6h"]
+[gd_scene format=3]
 
-[ext_resource type="Texture2D" uid="uid://ce0odkytpcj0j" path="res://Assets/images/player/Hit (32x32).png" id="1_dqkch"]
-[ext_resource type="Script" uid="uid://bo8yjir12i1pn" path="res://scripts/player.gd" id="1_qlg0r"]
-[ext_resource type="Texture2D" uid="uid://cto3t8peatm6h" path="res://Assets/images/player/Idle (32x32).png" id="2_qlg0r"]
-[ext_resource type="Texture2D" uid="uid://cpdbtldw8fgjo" path="res://Assets/images/player/Jump (32x32).png" id="3_tuyoq"]
-[ext_resource type="Texture2D" uid="uid://bv766wx5tnh7f" path="res://Assets/images/player/Run (32x32).png" id="4_fjrip"]
-[ext_resource type="AudioStream" uid="uid://djvs2iydfd3qs" path="res://Assets/sounds/jump.wav" id="6_tuyoq"]
-[ext_resource type="AudioStream" uid="uid://cewvnqwsbu40v" path="res://Assets/sounds/death.wav" id="7_fjrip"]
-[ext_resource type="PackedScene" uid="uid://bt3mi51su8jgn" path="res://scenes/heart.tscn" id="8_smehm"]
+[ext_resource type="Texture2D" path="res://Assets/images/player/Hit (32x32).png" id="1_dqkch"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_qlg0r"]
+[ext_resource type="Texture2D" path="res://Assets/images/player/Idle (32x32).png" id="2_qlg0r"]
+[ext_resource type="Texture2D" path="res://Assets/images/player/Jump (32x32).png" id="3_tuyoq"]
+[ext_resource type="Texture2D" path="res://Assets/images/player/Run (32x32).png" id="4_fjrip"]
+[ext_resource type="AudioStream" path="res://Assets/sounds/jump.wav" id="6_tuyoq"]
+[ext_resource type="AudioStream" path="res://Assets/sounds/death.wav" id="7_fjrip"]
+[ext_resource type="PackedScene" path="res://scenes/heart.tscn" id="8_smehm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
 atlas = ExtResource("1_dqkch")

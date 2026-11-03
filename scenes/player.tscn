@@ -264,9 +264,11 @@ shape = SubResource("RectangleShape2D_xrivr")
 
 [node name="jumpSound" type="AudioStreamPlayer2D" parent="." unique_id=1057407249]
 stream = ExtResource("6_tuyoq")
+bus = &"SFX"
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=668817480]
 stream = ExtResource("7_fjrip")
+bus = &"SFX"
 
 [node name="health_bar" type="CanvasLayer" parent="." unique_id=772994781]
 scale = Vector2(3, 3)

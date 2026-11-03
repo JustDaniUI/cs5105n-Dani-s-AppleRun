@@ -71,3 +71,4 @@ text = "SCORE : 0"
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1814683385]
 stream = ExtResource("4_jyhfs")
 autoplay = true
+bus = &"Music"

@@ -1,4 +1,4 @@
-﻿[gd_scene format=3 uid="uid://c35mh674qy6h"]
+[gd_scene format=3 uid="uid://c35mh674qy6h"]
 
 [ext_resource type="Texture2D" uid="uid://ce0odkytpcj0j" path="res://Assets/images/player/Hit (32x32).png" id="1_dqkch"]
 [ext_resource type="Script" uid="uid://bo8yjir12i1pn" path="res://scripts/player.gd" id="1_qlg0r"]
@@ -264,11 +264,9 @@ shape = SubResource("RectangleShape2D_xrivr")
 
 [node name="jumpSound" type="AudioStreamPlayer2D" parent="." unique_id=1057407249]
 stream = ExtResource("6_tuyoq")
-bus = &"SFX"
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=668817480]
 stream = ExtResource("7_fjrip")
-bus = &"SFX"
 
 [node name="health_bar" type="CanvasLayer" parent="." unique_id=772994781]
 scale = Vector2(3, 3)

@@ -1,7 +1,7 @@
-﻿[gd_scene format=3 uid="uid://diy2k8ritgwu7"]
+[gd_scene format=3 uid="uid://diy2k8ritgwu7"]
 
 [ext_resource type="Texture2D" uid="uid://ciyp12sl4o7ow" path="res://Assets/images/Snail/Walk (38x24).png" id="1_6lcqf"]
-[ext_resource type="Script" uid="uid://bp86imroibsis" path="res://scripts/snail_fsm.gd" id="1_oqbjf"]
+[ext_resource type="Script" uid="uid://bp86imroibsis" path="res://scripts/snail.gd" id="1_oqbjf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oqbjf"]
 atlas = ExtResource("1_6lcqf")
